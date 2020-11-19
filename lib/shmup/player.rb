@@ -1,15 +1,16 @@
 module Shmup
   class Player < Core::GameObject
-    attr_accessor :graphics, :velocity, :lives
+    attr_accessor :graphics, :velocity, :health
 
     IMMUTABILITY_TIME = 1000
 
     def initialize(object_pool)
       @graphics = Gosu::Image.new(Utils.asset_path('/sprites/player_ship_blue.png'), tileable: false)
       super(object_pool, *spawn_point)
-
       @velocity = 10
-      @lives = 3
+      @health = 500
+      @fire_rate = 1000
+      @bullet_speed = 20
     end
 
     def update
@@ -27,7 +28,7 @@ module Shmup
 
     def draw
       @graphics.draw_rot(x, y, 1, 0)
-      Gosu::Image.from_text(@lives, 20).draw(100, 100, 1)
+      Gosu::Image.from_text(@health, 80).draw(100, 100, 1)
     end
 
     def move_up
@@ -51,16 +52,17 @@ module Shmup
     end
 
     def shoot
-      p :boom
+      # if can_shoot?
+        p :shoot
+      # end
     end
 
     def on_collision(object)
-      @lives -= 1
-      @x, @y = spawn_point
+      @health -= 1
     end
 
     def dead?
-      @lives < 1
+      health <= 0
     end
 
     private

@@ -10,18 +10,27 @@ module Shmup
 
         enemy_sprite = Gosu::Image.new(Utils.asset_path('/sprites/enemy/spaceShips_001.png'), tileable: false)
 
-        @enemy_definitions = [
-            EnemyDefiniton.new(1000, enemy_sprite, 200),
-            EnemyDefiniton.new(1000, enemy_sprite, 800),
-            EnemyDefiniton.new(2000, enemy_sprite, 200),
-            EnemyDefiniton.new(2000, enemy_sprite, 800),
-            EnemyDefiniton.new(3000, enemy_sprite, 200),
-            EnemyDefiniton.new(3000, enemy_sprite, 800),
-            EnemyDefiniton.new(4000, enemy_sprite, 200),
-            EnemyDefiniton.new(4000, enemy_sprite, 800),
-            EnemyDefiniton.new(5000, enemy_sprite, 200),
-            EnemyDefiniton.new(5000, enemy_sprite, 800),
+
+        wave_one = [
+            { spawn_time: 1250, sprite: enemy_sprite, position_x: $window.width / 4 },
+            { spawn_time: 1250, sprite: enemy_sprite, position_x: ($window.width / 2) + $window.width / 4 },
+            { spawn_time: 1500, sprite: enemy_sprite, position_x: $window.width / 8 },
+            { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width * 3) / 8 },
+            { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width / 2) + $window.width / 8 },
+            { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width / 2) + ($window.width * 3) / 8 }
         ]
+
+        wave_two = [
+            { spawn_time: 1000, sprite: enemy_sprite, position_x: $window.width / 2 },
+            { spawn_time: 1250, sprite: enemy_sprite, position_x: $window.width / 3 },
+            { spawn_time: 1250, sprite: enemy_sprite, position_x: $window.width * 2 / 3 },
+            { spawn_time: 1500, sprite: enemy_sprite, position_x: $window.width / 5 },
+            { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width / 2) + ($window.width / 3) },
+            { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width / 2) }
+        ]
+        enemy_patterns = wave_one + wave_two.map { |w| w[:spawn_time] =  w[:spawn_time] + 2000; w }
+
+        @enemy_definitions = enemy_patterns.map { |p| EnemyDefiniton.new(p[:spawn_time], p[:sprite], p[:position_x]) }
 
         @world_speed = 20
       end

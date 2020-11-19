@@ -8,8 +8,14 @@ module Shmup
       def assets_path
         @assets_path ||= File.expand_path('../../../assets', __FILE__)
       end
+
+      def adjust_speed(speed)
+        speed * update_interval / 33.33
+      end
     end
   end
+
+
 
   module ZOrder
     Background, Player, Hud = 0..2

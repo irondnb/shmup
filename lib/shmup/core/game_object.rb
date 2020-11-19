@@ -4,10 +4,14 @@ module Shmup
       attr_reader :x, :y, :location, :components
 
       def initialize(object_pool, x, y)
-        @x, @y = x, y
+        move(x, y)
         @components = []
         @object_pool = object_pool
         @object_pool.add(self)
+      end
+
+      def move(new_x, new_y)
+        @x, @y = new_x, new_y
       end
 
       def update

@@ -19,7 +19,7 @@ module Shmup
 
       def object=(obj)
         if obj
-          self.object = obj
+          @object = obj
           obj.components << self
         end
       end
