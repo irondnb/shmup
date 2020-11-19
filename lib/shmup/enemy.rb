@@ -8,10 +8,11 @@ module Shmup
 
     def update
       @y = @y + 10
+      mark_for_removal if @y > $window.height
     end
 
     def draw
-      @graphics.draw(x, y, 1)
+      @graphics.draw_rot(x, y, 1, 0)
     end
   end
 end

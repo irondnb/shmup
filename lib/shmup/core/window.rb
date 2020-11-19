@@ -19,6 +19,7 @@ module Shmup
 
       def draw
         @state.draw
+        Gosu::Image
       end
 
       def needs_redraw?

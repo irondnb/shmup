@@ -23,7 +23,7 @@ module Shmup
             EnemyDefiniton.new(5000, enemy_sprite, 800),
         ]
 
-        @world_speed = 15
+        @world_speed = 20
       end
 
       def update
