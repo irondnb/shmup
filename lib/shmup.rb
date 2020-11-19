@@ -6,6 +6,7 @@ require 'logger'
   states
   player
   enemy
+  enemy_definition
   background
   utils
 ).each { |filename| require "shmup/#{filename}" }

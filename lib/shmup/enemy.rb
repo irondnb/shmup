@@ -1,8 +1,8 @@
 module Shmup
   class Enemy < Core::GameObject
-    def initialize(object_pool)
+    def initialize(object_pool, definition)
       super(object_pool, rand($window.width), 0)
-      @graphics = Gosu::Image.new(Utils.asset_path('/sprites/enemy/spaceShips_001.png'), tileable: false)
+      @graphics = definition.sprite
     end
 
     def update

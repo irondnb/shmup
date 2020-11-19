@@ -8,9 +8,15 @@ module Shmup
         @background = Background.new(self)
         @player = Player.new(@object_pool)
 
-        3.times do
-          Enemy.new(@object_pool)
-        end
+        enemy_sprite = Gosu::Image.new(Utils.asset_path('/sprites/enemy/spaceShips_001.png'), tileable: false)
+
+        @enemy_definitions = [
+            EnemyDefiniton.new(1000, enemy_sprite),
+            EnemyDefiniton.new(2000, enemy_sprite),
+            EnemyDefiniton.new(3000, enemy_sprite),
+            EnemyDefiniton.new(4000, enemy_sprite),
+            EnemyDefiniton.new(5000, enemy_sprite),
+        ]
 
         @world_speed = 15
       end
@@ -18,6 +24,11 @@ module Shmup
       def update
         $window.close if Gosu.button_down?(Gosu::KbEscape)
         @background.update
+
+        if !@enemy_definitions.empty? && Gosu.milliseconds >= @enemy_definitions.first.spawn_time
+          Enemy.new(@object_pool, @enemy_definitions.shift)
+        end
+
         @object_pool.update_all
       end
 
