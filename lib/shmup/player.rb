@@ -1,11 +1,8 @@
 module Shmup
-  class Player
-    attr_reader :x, :y
-
-    def initialize(window)
-      @window = window
+  class Player < Core::GameObject
+    def initialize(object_pool)
       @graphics = Gosu::Image.new(Utils.asset_path('/sprites/player_ship_blue.png'), tileable: false)
-      @x, @y = [ (@window.width - @graphics.width) / 2,  (@window.height - @graphics.height) / 2]
+      super(object_pool, ($window.width - @graphics.width) / 2,  ($window.height - @graphics.height) / 2)
     end
 
     def update
@@ -27,8 +24,8 @@ module Shmup
 
     def move_down
       @y = @y + 10
-      if @y > @window.height - @graphics.height
-        @y = @window.height - @graphics.height
+      if @y > $window.height - @graphics.height
+        @y = $window.height - @graphics.height
       end
     end
 
@@ -39,8 +36,8 @@ module Shmup
 
     def move_right
       @x = @x + 10
-      if @x > @window.width - @graphics.width
-        @x = @window.width - @graphics.width
+      if @x > $window.width - @graphics.width
+        @x = $window.width - @graphics.width
       end
     end
 

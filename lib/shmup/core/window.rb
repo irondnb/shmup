@@ -1,6 +1,8 @@
 module Shmup
   module Core
     class Window < Gosu::Window
+      attr_accessor :state
+
       attr_reader :game
 
       WIDTH = 960 #480
@@ -9,19 +11,26 @@ module Shmup
 
       def initialize
         super(WIDTH, HEIGHT, FULLSCREEN)
-        @game = Game.new(self)
       end
 
       def update
-        @game.update
+        @state.update
       end
 
       def draw
-        @game.draw
+        @state.draw
+      end
+
+      def needs_redraw?
+        @state.needs_redraw?
       end
 
       def needs_cursor?
         false
+      end
+
+      def button_down(id)
+        @state.button_down(id)
       end
     end
   end

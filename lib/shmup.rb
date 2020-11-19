@@ -3,14 +3,18 @@ require 'logger'
 
 %w(
   core
+  states
   player
+  background
   utils
 ).each { |filename| require "shmup/#{filename}" }
 
 module Shmup
   class << self
     def start
-      Core::Window.new.show
+      $window = Core::Window.new
+      States::GameState.switch(States::PlayState.new)
+      $window.show
     rescue => e
       logger.fatal e.full_message
     end

@@ -1,6 +1,8 @@
 %w(
+component
+game_object
+object_pool
   window
-  game
 ).each { |filename| require "shmup/core/#{filename}" }
 
 module Shmup
