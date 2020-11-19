@@ -8,7 +8,11 @@ module Shmup
         @background = Background.new(self)
         @player = Player.new(@object_pool)
 
-        @world_speed = 10
+        3.times do
+          Enemy.new(@object_pool)
+        end
+
+        @world_speed = 15
       end
 
       def update
