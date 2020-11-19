@@ -11,11 +11,16 @@ module Shmup
         enemy_sprite = Gosu::Image.new(Utils.asset_path('/sprites/enemy/spaceShips_001.png'), tileable: false)
 
         @enemy_definitions = [
-            EnemyDefiniton.new(1000, enemy_sprite),
-            EnemyDefiniton.new(2000, enemy_sprite),
-            EnemyDefiniton.new(3000, enemy_sprite),
-            EnemyDefiniton.new(4000, enemy_sprite),
-            EnemyDefiniton.new(5000, enemy_sprite),
+            EnemyDefiniton.new(1000, enemy_sprite, 200),
+            EnemyDefiniton.new(1000, enemy_sprite, 800),
+            EnemyDefiniton.new(2000, enemy_sprite, 200),
+            EnemyDefiniton.new(2000, enemy_sprite, 800),
+            EnemyDefiniton.new(3000, enemy_sprite, 200),
+            EnemyDefiniton.new(3000, enemy_sprite, 800),
+            EnemyDefiniton.new(4000, enemy_sprite, 200),
+            EnemyDefiniton.new(4000, enemy_sprite, 800),
+            EnemyDefiniton.new(5000, enemy_sprite, 200),
+            EnemyDefiniton.new(5000, enemy_sprite, 800),
         ]
 
         @world_speed = 15

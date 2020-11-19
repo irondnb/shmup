@@ -1,12 +1,13 @@
 module Shmup
   class Enemy < Core::GameObject
     def initialize(object_pool, definition)
-      super(object_pool, rand($window.width), 0)
+      super(object_pool, definition.position_x, 0)
       @graphics = definition.sprite
+      @y = @y - @graphics.height
     end
 
     def update
-      @y = @y + 8
+      @y = @y + 10
     end
 
     def draw
