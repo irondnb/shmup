@@ -27,9 +27,7 @@ module Shmup
 
       def nearby_point(cx, cy, max_distance, object = nil)
         @objects.select do |obj|
-          dist  = Gosu.distance(obj.x, obj.y, cx, cy)
-          p dist #why
-          obj != object && dist <= max_distance
+          obj != object && Gosu.distance(obj.x, obj.y, cx, cy) <= max_distance
         end
       end
     end

@@ -28,13 +28,15 @@ module Shmup
 
       def update
         $window.close if Gosu.button_down?(Gosu::KbEscape)
-        @background.update
 
-        if !@enemy_definitions.empty? && Gosu.milliseconds >= @enemy_definitions.first.spawn_time
-          Enemy.new(@object_pool, @enemy_definitions.shift)
+        unless @player.dead?
+          if !@enemy_definitions.empty? && Gosu.milliseconds >= @enemy_definitions.first.spawn_time
+            Enemy.new(@object_pool, @enemy_definitions.shift)
+          end
+
+          @background.update
+          @object_pool.update_all
         end
-
-        @object_pool.update_all
       end
 
       def draw

@@ -5,7 +5,6 @@ module Shmup
 
       def initialize(object_pool, x, y)
         @x, @y = x, y
-        @location = [x, y]
         @components = []
         @object_pool = object_pool
         @object_pool.add(self)
@@ -25,6 +24,13 @@ module Shmup
 
       def mark_for_removal
         @removable = true
+      end
+
+      def location
+        [x, y]
+      end
+
+      def on_collision(object)
       end
 
       protected
