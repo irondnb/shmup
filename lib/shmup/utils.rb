@@ -10,4 +10,8 @@ module Shmup
       end
     end
   end
+
+  module ZOrder
+    Background, Player, Hud = 0..2
+  end
 end

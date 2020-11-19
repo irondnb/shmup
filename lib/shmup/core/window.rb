@@ -3,8 +3,8 @@ module Shmup
     class Window < Gosu::Window
       attr_reader :game
 
-      WIDTH = 480
-      HEIGHT = 640
+      WIDTH = 960 #480
+      HEIGHT = 1280 #640
       FULLSCREEN = false
 
       def initialize
