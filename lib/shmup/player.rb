@@ -6,9 +6,8 @@ module Shmup
       @graphics = Gosu::Image.new(Utils.asset_path('/sprites/player_ship_blue.png'), tileable: false)
       super(object_pool, *spawn_point)
       @velocity = 10
-      @health = 500
+      @health = Health.new(self, 500)
       @fire_rate = 400
-
     end
 
     def update
@@ -25,8 +24,8 @@ module Shmup
     end
 
     def draw
+      super
       @graphics.draw_rot(x, y, 1, 0)
-      Gosu::Image.from_text(@health, 80).draw(100, 100, 1)
     end
 
     def move_up
@@ -50,10 +49,10 @@ module Shmup
     end
 
     def shoot
-      if can_shoot?
-        @last_shoot = Gosu.milliseconds
-        Bullet.new(object_pool, self)
-      end
+      return unless can_shoot?
+
+      @last_shoot = Gosu.milliseconds
+      Bullet.new(object_pool, self)
     end
 
     def can_shoot?
@@ -61,13 +60,11 @@ module Shmup
     end
 
     def on_collision(object)
-      if object.class == Shmup::Enemy::Ship
-        @health -= 500
-      end
+      health.inflict_damage(500) if object.instance_of? Shmup::Enemy::Ship
     end
 
-    def alive?
-      health > 0
+    def dead?
+      health.dead?
     end
 
     private

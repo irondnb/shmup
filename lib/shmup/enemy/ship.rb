@@ -1,16 +1,13 @@
 module Shmup
   module Enemy
     class Ship < Core::GameObject
-      Sprites = {
-        1 => Gosu::Image.new(Utils.asset_path('/sprites/enemy/spaceShips_001.png'), tileable: false)
-      }.freeze
-      attr_accessor :health
+      attr_accessor :health, :graphics
 
       def initialize(object_pool, definition)
+        super(object_pool, definition.offset, -100)
         @movement = definition.movement
         @graphics = Sprites[definition.sprite]
-        super(object_pool, definition.offset, -@graphics.height)
-        @health = 100
+        @health = Health.new(self, 100)
       end
 
       def update
@@ -19,12 +16,12 @@ module Shmup
       end
 
       def draw
+        super
         @graphics.draw_rot(x, y, 1, 0)
-        Gosu::Image.from_text(@health, 20).draw(x, y - 100, 1)
       end
 
       def dead?
-        @health <= 0
+        health.dead?
       end
     end
   end

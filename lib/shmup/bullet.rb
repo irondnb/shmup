@@ -11,7 +11,7 @@ module Shmup
     def update
       @y -= 25
 
-      object_pool.nearby(self, 100).each do |obj|
+      object_pool.nearby(self, 120).each do |obj|
         next if obj == source
 
         hit(obj) if obj.respond_to?(:health)
@@ -22,17 +22,8 @@ module Shmup
       @graphics.draw(x, y, 2)
     end
 
-    def on_collision(obj)
-      obj
-    end
-
-
-    def check_hit
-
-    end
-
     def hit(obj)
-      obj.health -= 10
+      obj.health.inflict_damage(10)
     end
   end
 end

@@ -18,9 +18,7 @@ module Shmup
       end
 
       def update
-
-
-        if @player.alive?
+        unless @player.dead?
           build_enemies if @enemies.empty?
           Enemy::Ship.new(@object_pool, @enemies.shift) if !@enemies.empty? && Gosu.milliseconds >= @enemies.first.spawn_time
           @object_pool.update_all
@@ -30,7 +28,7 @@ module Shmup
       def draw
         @background.draw
         @object_pool.objects.each(&:draw)
-        @game_over.draw_rot($window.width / 2, $window.height / 2, 1, 0) unless @player.alive?
+        @game_over.draw_rot($window.width / 2, $window.height / 2, 1, 0) if @player.dead?
       end
 
       def button_down(id)

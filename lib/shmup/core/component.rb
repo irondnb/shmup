@@ -18,10 +18,10 @@ module Shmup
       protected
 
       def object=(obj)
-        if obj
-          @object = obj
-          obj.components << self
-        end
+        return unless obj
+
+        @object = obj
+        obj.components << self
       end
 
       def x

@@ -6,6 +6,10 @@
 
 module Shmup
   module Enemy
+    Sprites = {
+        1 => Gosu::Image.new(Utils.asset_path('/sprites/enemy/spaceShips_001.png'), tileable: false)
+    }.freeze
+
     class << self
       def build_definitions(enemy_list, time_offset: 0)
         enemy_list.map do |p|
