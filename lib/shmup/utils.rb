@@ -25,8 +25,10 @@ module Shmup
     end
   end
 
-
   module ZOrder
-    Background, Player, Hud = 0..2
+    BACKGROUND = 0
+    BULLET = 1
+    ENEMY = 2
+    PLAYER = 3
   end
 end

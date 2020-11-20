@@ -27,5 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'ruby-prof', '~> 1.4'
 
   spec.add_dependency 'gosu'
+  spec.add_dependency 'quadtree', '~> 1.0'
   spec.add_dependency 'yaml', '~> 0.1.0'
 end

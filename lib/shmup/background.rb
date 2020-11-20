@@ -15,8 +15,8 @@ module Shmup
     end
 
     def draw
-      @graphics.draw(0, position, 0)
-      @graphics.draw(0, position - @graphics.height, 0)
+      @graphics.draw(0, position, ZOrder::BACKGROUND)
+      @graphics.draw(0, position - @graphics.height, ZOrder::BACKGROUND)
     end
   end
 end

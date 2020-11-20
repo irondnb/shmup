@@ -9,7 +9,7 @@ module Shmup
     end
 
     def update
-      @y -= 25
+      @y -= 15
 
       object_pool.nearby(self, 120).each do |obj|
         next if obj == source
@@ -19,7 +19,7 @@ module Shmup
     end
 
     def draw
-      @graphics.draw(x, y, 2)
+      @graphics.draw(x, y, ZOrder::BULLET)
     end
 
     def hit(obj)

@@ -5,9 +5,9 @@ module Shmup
 
       def initialize(object_pool, definition)
         super(object_pool, definition.offset, -100)
-        @movement = definition.movement
         @graphics = Enemy.load_sprite(definition.sprite)
         @health = Health.new(self, 100)
+        @movement = definition.movement
       end
 
       def update
@@ -17,7 +17,7 @@ module Shmup
 
       def draw
         super
-        @graphics.draw_rot(x, y, 1, 0)
+        @graphics.draw_rot(x, y, 1, ZOrder::ENEMY)
       end
 
       def dead?

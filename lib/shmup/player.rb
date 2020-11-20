@@ -25,7 +25,7 @@ module Shmup
 
     def draw
       super
-      @graphics.draw_rot(x, y, 1, 0)
+      @graphics.draw_rot(x, y, 1, ZOrder::PLAYER)
     end
 
     def move_up
