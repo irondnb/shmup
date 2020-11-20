@@ -6,7 +6,7 @@ module Shmup
       def initialize(object_pool, definition)
         super(object_pool, definition.offset, -100)
         @movement = definition.movement
-        @graphics = Sprites[definition.sprite]
+        @graphics = Enemy.load_sprite(definition.sprite)
         @health = Health.new(self, 100)
       end
 
