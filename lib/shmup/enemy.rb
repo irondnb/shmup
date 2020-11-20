@@ -3,14 +3,13 @@ module Shmup
     attr_accessor :health
 
     def initialize(object_pool, definition)
-      super(object_pool, definition.position_x, 0)
       @graphics = definition.sprite
-      @y = @y - @graphics.height
+      super(object_pool, definition.offset, -@graphics.height)
       @health = 100
     end
 
     def update
-      @y = @y + 10
+      @y += 10
       mark_for_removal if @y > $window.height || dead?
     end
 

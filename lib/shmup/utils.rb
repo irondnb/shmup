@@ -9,6 +9,10 @@ module Shmup
         @assets_path ||= File.expand_path('../../../assets', __FILE__)
       end
 
+      def level_path(id)
+        File.join(assets_path, 'levels', "level_#{id}.yml")
+      end
+
       def adjust_speed(speed)
         speed * update_interval / 33.33
       end

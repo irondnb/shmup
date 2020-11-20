@@ -14,16 +14,18 @@ Gem::Specification.new do |spec|
   spec.summary       = "A work-in-progress Shoot'em up game written in Ruby using gosu."
   spec.description   = "A work-in-progress Shoot'em up game written in Ruby using gosu."
   spec.license       = 'MIT'
-  spec.files        = Dir['{lib/**/*,[A-Z]*}']
 
+  spec.files = Dir['{lib/**/*,[A-Z]*}']
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler', '~> 2.1.4'
+  spec.add_development_dependency 'logger'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.10'
   spec.add_development_dependency 'rubocop', '~> 1.3'
   spec.add_development_dependency 'rubocop-rspec', '~> 2.0'
-  spec.add_development_dependency 'logger'
+
 
   spec.add_dependency 'gosu'
+  spec.add_dependency 'yaml', '~> 0.1.0'
 end

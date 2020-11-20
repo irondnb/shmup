@@ -1,0 +1,19 @@
+enemies:
+  - spawn_time: 1000
+    sprite: 1
+    offset: 0.5
+  - spawn_time: 1250
+    sprite: 1
+    offset: 0.33
+  - spawn_time: 1250
+    sprite: 1
+    offset: 0.66
+  - spawn_time: 1500
+    sprite: 1
+    offset: 0.82
+  - spawn_time: 1500
+    sprite: 1
+    offset: 0.16
+  - spawn_time: 1500
+    sprite: 1
+    offset: 0.5

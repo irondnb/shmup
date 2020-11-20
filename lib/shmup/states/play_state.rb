@@ -1,35 +1,17 @@
 module Shmup
   module States
     class PlayState < GameState
+      require 'yaml'
+
       attr_reader :object_pool, :world_speed
 
       def initialize
         @object_pool = Core::ObjectPool.new
         @background = Background.new(self)
         @player = Player.new(@object_pool)
-
         enemy_sprite = Gosu::Image.new(Utils.asset_path('/sprites/enemy/spaceShips_001.png'), tileable: false)
-
-
-        wave_one = [
-            { spawn_time: 1250, sprite: enemy_sprite, position_x: $window.width / 4 },
-            { spawn_time: 1250, sprite: enemy_sprite, position_x: ($window.width / 2) + $window.width / 4 },
-            { spawn_time: 1500, sprite: enemy_sprite, position_x: $window.width / 8 },
-            { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width * 3) / 8 },
-            { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width / 2) + $window.width / 8 },
-            { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width / 2) + ($window.width * 3) / 8 }
-        ]
-
-        wave_two = [
-            { spawn_time: 1000, sprite: enemy_sprite, position_x: $window.width / 2 },
-            { spawn_time: 1250, sprite: enemy_sprite, position_x: $window.width / 3 },
-            { spawn_time: 1250, sprite: enemy_sprite, position_x: $window.width * 2 / 3 },
-            { spawn_time: 1500, sprite: enemy_sprite, position_x: $window.width / 5 },
-            { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width / 2) + ($window.width / 3) },
-            { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width / 2) }
-        ]
-        enemy_patterns = wave_one + wave_two.map { |w| w[:spawn_time] =  w[:spawn_time] + 2000; w }
-        @enemy_definitions = enemy_patterns.map { |p| EnemyDefiniton.new(p[:spawn_time], p[:sprite], p[:position_x]) }
+        enemy_patterns = YAML.safe_load(File.open(Utils.level_path('01')))['enemies']
+        @enemy_definitions = enemy_patterns.map { |p| EnemyDefiniton.new(p['spawn_time'], enemy_sprite, p['offset'] * $window.width) }
 
         @world_speed = 20
 

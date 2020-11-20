@@ -1,8 +1,10 @@
 module Shmup
   class Bullet < Core::GameObject
+    attr_reader :source
+
     def initialize(object_pool, source)
       super(object_pool, source.x, source.y)
-      @graphics = Gosu::Image.new(Utils.asset_path('/sprites/bullet.png'), tileable: false)
+      @graphics = Gosu::Image.new(Utils.asset_path('/sprites/bullet.png'))
       @source = source
     end
 
@@ -10,13 +12,14 @@ module Shmup
       @y -= 25
 
       object_pool.nearby(self, 100).each do |obj|
-        next if obj == @source # Don't hit source tank
+        next if obj == source
+
         hit(obj) if obj.respond_to?(:health)
       end
     end
 
     def draw
-      @graphics.draw(x + (@graphics.width / 2), y, 2)
+      @graphics.draw(x, y, 2)
     end
 
     def on_collision(obj)
