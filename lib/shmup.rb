@@ -1,16 +1,16 @@
 require 'gosu'
 require 'logger'
 
-%w(
+%w[
   core
+  utils
   bullet
   states
   player
   enemy
   enemy_definition
   background
-  utils
-).each { |filename| require "shmup/#{filename}" }
+].each { |filename| require "shmup/#{filename}" }
 
 module Shmup
   class << self

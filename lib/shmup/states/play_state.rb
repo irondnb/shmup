@@ -6,15 +6,13 @@ module Shmup
       attr_reader :object_pool, :world_speed
 
       def initialize
+        super
         @object_pool = Core::ObjectPool.new
         @background = Background.new(self)
         @player = Player.new(@object_pool)
-        enemy_sprite = Gosu::Image.new(Utils.asset_path('/sprites/enemy/spaceShips_001.png'), tileable: false)
         enemy_patterns = YAML.safe_load(File.open(Utils.level_path('01')))['enemies']
-        @enemy_definitions = enemy_patterns.map { |p| EnemyDefiniton.new(p['spawn_time'], enemy_sprite, p['offset'] * $window.width) }
-
+        @enemy_definitions = enemy_patterns.map { |p| EnemyDefiniton.new(p['spawn_time'], p['sprite'], p['offset'] * $window.width) }
         @world_speed = 20
-
         @game_over = Gosu::Image.from_text("Game Over", 120)
       end
 

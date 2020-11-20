@@ -1,9 +1,14 @@
 module Shmup
   class Enemy < Core::GameObject
+
+    SPRITES = {
+      1 => Gosu::Image.new(Utils.asset_path('/sprites/enemy/spaceShips_001.png'), tileable: false)
+    }.freeze
+
     attr_accessor :health
 
     def initialize(object_pool, definition)
-      @graphics = definition.sprite
+      @graphics = SPRITES[definition.sprite]
       super(object_pool, definition.offset, -@graphics.height)
       @health = 100
     end
