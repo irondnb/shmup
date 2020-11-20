@@ -18,10 +18,10 @@ module Shmup
       end
 
       def update
-        $window.close if Gosu.button_down?(Gosu::KbEscape)
+
 
         if @player.alive?
-          # build_enemies if @enemies.empty?
+          build_enemies if @enemies.empty?
           Enemy::Ship.new(@object_pool, @enemies.shift) if !@enemies.empty? && Gosu.milliseconds >= @enemies.first.spawn_time
           @object_pool.update_all
         end
@@ -33,6 +33,11 @@ module Shmup
         @game_over.draw_rot($window.width / 2, $window.height / 2, 1, 0) unless @player.alive?
       end
 
+      def button_down(id)
+        $window.close if id == Gosu::KbEscape
+        toggle_profiling if id == Gosu::KbF2
+      end
+
       private
 
       def load_enemies
@@ -41,6 +46,19 @@ module Shmup
 
       def build_enemies
         @enemies = Enemy.build_definitions(load_enemies, time_offset: Gosu.milliseconds)
+      end
+
+      def toggle_profiling
+        require 'ruby-prof' unless defined?(RubyProf)
+        if @profiling_now
+          result = RubyProf.stop
+          printer = RubyProf::FlatPrinter.new(result)
+          printer.print(STDOUT)
+          @profiling_now = false
+        else
+          RubyProf.start
+          @profiling_now = true
+        end
       end
     end
   end

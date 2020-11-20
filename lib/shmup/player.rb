@@ -61,8 +61,8 @@ module Shmup
     end
 
     def on_collision(object)
-      if object.class == Shmup::Enemy
-          @health -= 500
+      if object.class == Shmup::Enemy::Ship
+        @health -= 500
       end
     end
 

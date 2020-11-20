@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.10'
   spec.add_development_dependency 'rubocop', '~> 1.3'
   spec.add_development_dependency 'rubocop-rspec', '~> 2.0'
-
+  spec.add_development_dependency 'ruby-prof', '~> 1.4'
 
   spec.add_dependency 'gosu'
   spec.add_dependency 'yaml', '~> 0.1.0'
