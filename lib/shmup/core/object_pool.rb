@@ -1,7 +1,7 @@
 module Shmup
   module Core
     class ObjectPool
-      attr_accessor :objects
+      attr_accessor :objects, :background, :world_speed
 
       def initialize
         @objects = []
@@ -12,11 +12,10 @@ module Shmup
       end
 
       def update_all
+        background.update
         objects.each(&:update)
         objects.reject! do |o|
-          if o.removable?
-            true
-          end
+          true if o.removable?
         end
       end
 

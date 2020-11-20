@@ -1,7 +1,7 @@
 module Shmup
   module Core
     class GameObject
-      attr_reader :x, :y, :location, :components
+      attr_reader :x, :y, :components
 
       def initialize(object_pool, x, y)
         move(x, y)
@@ -34,14 +34,11 @@ module Shmup
         [x, y]
       end
 
-      def on_collision(object)
-      end
+      def on_collision(object); end
 
       protected
 
-      def object_pool
-        @object_pool
-      end
+      attr_reader :object_pool
     end
   end
 end

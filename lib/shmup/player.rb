@@ -7,7 +7,7 @@ module Shmup
       super(object_pool, *spawn_point)
       @velocity = 10
       @health = 500
-      @fire_rate = 500
+      @fire_rate = 400
 
     end
 

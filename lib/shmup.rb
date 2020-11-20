@@ -4,12 +4,11 @@ require 'logger'
 %w[
   core
   utils
+  background
   bullet
   states
   player
   enemy
-  enemy_definition
-  background
 ].each { |filename| require "shmup/#{filename}" }
 
 module Shmup

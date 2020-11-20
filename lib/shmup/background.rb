@@ -1,14 +1,16 @@
 module Shmup
   class Background
     attr_reader :game, :graphics, :position
-    def initialize(game)
-      @game = game
+
+    def initialize(object_pool)
+      @object_pool = object_pool
+      object_pool.background = self
       @graphics = Gosu::Image.new(Utils.asset_path('/sprites/background.png'), tileable: false)
       @position = 0
     end
 
     def update
-      @position += @game.world_speed
+      @position += @object_pool.world_speed
       @position = 0 if position >= @graphics.height
     end
 

@@ -1,30 +1,38 @@
+%w[
+  definition
+  movement
+  ship
+].each { |filename| require "shmup/enemy/#{filename}" }
+
 module Shmup
-  class Enemy < Core::GameObject
+  module Enemy
+    class << self
+      def build_definitions(enemy_list, time_offset: 0)
+        enemy_list.map do |p|
 
-    SPRITES = {
-      1 => Gosu::Image.new(Utils.asset_path('/sprites/enemy/spaceShips_001.png'), tileable: false)
-    }.freeze
+          Definition.new(
+            p['spawn_time'] + time_offset,
+            p['sprite'],
+            p['offset'] * $window.width,
+            movement(p['movement'])
+          )
+        end
+      end
 
-    attr_accessor :health
+      private
 
-    def initialize(object_pool, definition)
-      @graphics = SPRITES[definition.sprite]
-      super(object_pool, definition.offset, -@graphics.height)
-      @health = 100
-    end
-
-    def update
-      @y += 10
-      mark_for_removal if @y > $window.height || dead?
-    end
-
-    def draw
-      @graphics.draw_rot(x, y, 1, 0)
-      Gosu::Image.from_text(@health, 20).draw(x, y - 100, 1)
-    end
-
-    def dead?
-      @health <= 0
+      def movement(name)
+        case name
+        when 'none'
+          Movement::None
+        when 'fast'
+          Movement::Fast
+        when 'medium'
+          Movement::Medium
+        else
+          Movement::None
+        end
+      end
     end
   end
 end
