@@ -29,20 +29,20 @@ module Shmup
             { spawn_time: 1500, sprite: enemy_sprite, position_x: ($window.width / 2) }
         ]
         enemy_patterns = wave_one + wave_two.map { |w| w[:spawn_time] =  w[:spawn_time] + 2000; w }
-
         @enemy_definitions = enemy_patterns.map { |p| EnemyDefiniton.new(p[:spawn_time], p[:sprite], p[:position_x]) }
 
         @world_speed = 20
+
+        @game_over = Gosu::Image.from_text("Game Over", 120)
       end
 
       def update
         $window.close if Gosu.button_down?(Gosu::KbEscape)
 
-        unless @player.dead?
+        if @player.alive?
           if !@enemy_definitions.empty? && Gosu.milliseconds >= @enemy_definitions.first.spawn_time
             Enemy.new(@object_pool, @enemy_definitions.shift)
           end
-
           @background.update
           @object_pool.update_all
         end
@@ -51,6 +51,7 @@ module Shmup
       def draw
         @background.draw
         @object_pool.objects.each(&:draw)
+        @game_over.draw_rot($window.width / 2, $window.height / 2, 1, 0) unless @player.alive?
       end
     end
   end

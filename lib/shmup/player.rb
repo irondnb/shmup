@@ -2,15 +2,13 @@ module Shmup
   class Player < Core::GameObject
     attr_accessor :graphics, :velocity, :health
 
-    IMMUTABILITY_TIME = 1000
-
     def initialize(object_pool)
       @graphics = Gosu::Image.new(Utils.asset_path('/sprites/player_ship_blue.png'), tileable: false)
       super(object_pool, *spawn_point)
       @velocity = 10
       @health = 500
-      @fire_rate = 1000
-      @bullet_speed = 20
+      @fire_rate = 200
+
     end
 
     def update
@@ -20,7 +18,7 @@ module Shmup
       move_down  if Gosu::button_down?(Gosu::KbDown)
       shoot      if Gosu::button_down?(Gosu::KbSpace)
 
-      object_pool.nearby(self, 200).each do |obj|
+      object_pool.nearby(self, 150).each do |obj|
         dist = Gosu.distance(x, y, obj.x, obj.y)
         on_collision(obj) if dist < 100
       end
@@ -52,17 +50,24 @@ module Shmup
     end
 
     def shoot
-      # if can_shoot?
-        p :shoot
-      # end
+      if can_shoot?
+        @last_shoot = Gosu.milliseconds
+        Bullet.new(object_pool, self)
+      end
+    end
+
+    def can_shoot?
+      Gosu.milliseconds > (@last_shoot || 0) + @fire_rate
     end
 
     def on_collision(object)
-      @health -= 1
+      if object.class == Shmup::Enemy
+          @health -= 500
+      end
     end
 
-    def dead?
-      health <= 0
+    def alive?
+      health > 0
     end
 
     private

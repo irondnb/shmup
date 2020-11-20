@@ -3,6 +3,7 @@ require 'logger'
 
 %w(
   core
+  bullet
   states
   player
   enemy
