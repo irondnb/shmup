@@ -8,10 +8,11 @@ module Shmup
       @velocity = 10
       @health = Health.new(self, 500)
       @fire_rate = 600
-      @damage = 500
+      @damage = 300
     end
 
     def update
+      super
       move_up    if Gosu::button_down?(Gosu::KbUp)
       move_left  if Gosu::button_down?(Gosu::KbLeft)
       move_right if Gosu::button_down?(Gosu::KbRight)
@@ -61,7 +62,7 @@ module Shmup
     end
 
     def on_collision(object)
-      # health.inflict_damage(500) if object.instance_of? Shmup::Enemy::Ship
+      #health.inflict_damage(500) if object.instance_of? Shmup::Enemy::Ship
     end
 
     def dead?
@@ -71,7 +72,7 @@ module Shmup
     private
 
     def spawn_point
-      [($window.width - @graphics.width) / 2,  $window.height - @graphics.height - 200]
+      [$window.width  / 2,  $window.height - 200]
     end
 
     def width

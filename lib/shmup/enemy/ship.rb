@@ -11,9 +11,11 @@ module Shmup
         @movement = definition.movement
         @fire_motion = definition.fire_motion
         @offset = definition.offset
+        @damage = 100 # definition.damage
       end
 
       def update
+        super
         @movement.call(self, object_pool.world_speed)
         shoot if gun?
         mark_for_removal if @y > $window.height || dead?
