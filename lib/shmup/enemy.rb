@@ -18,7 +18,8 @@ module Shmup
             e['spawn_time'] + time_offset,
             e['sprite'],
             e['offset'] * $window.width,
-            movement(e['movement'])
+            movement(e['movement']),
+            e['health']
           )
         end
       end

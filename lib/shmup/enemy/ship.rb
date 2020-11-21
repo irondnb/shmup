@@ -6,7 +6,7 @@ module Shmup
       def initialize(object_pool, definition)
         super(object_pool, definition.offset, -100)
         @graphics = Enemy.load_sprite(definition.sprite)
-        @health = Health.new(self, 100)
+        @health = Health.new(self, definition.health)
         @movement = definition.movement
       end
 
@@ -22,6 +22,11 @@ module Shmup
 
       def dead?
         health.dead?
+      end
+
+      def mark_for_removal
+        super
+        Explosion.new(object_pool, x, y) if dead?
       end
     end
   end

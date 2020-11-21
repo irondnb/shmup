@@ -4,12 +4,16 @@ module Shmup
 
     def initialize(object, health)
       super(object)
-      @health = health
+      @health, @initial_health = health
       update_image
     end
 
     def dead?
       @health < 1
+    end
+
+    def restore
+      @health = @initial_health
     end
 
     def update

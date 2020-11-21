@@ -34,6 +34,7 @@ module Shmup
       def button_down(id)
         $window.close if id == Gosu::KbEscape
         toggle_profiling if id == Gosu::KbF2
+        toggle_profiling if id == Gosu::KbF2
       end
 
       private

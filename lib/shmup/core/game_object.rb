@@ -30,7 +30,7 @@ module Shmup
       end
 
       def effect?
-        true
+        false
       end
 
       def removable?

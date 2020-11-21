@@ -8,6 +8,7 @@ module Shmup
       @velocity = 10
       @health = Health.new(self, 500)
       @fire_rate = 400
+      @damage = 300
     end
 
     def update
@@ -52,7 +53,7 @@ module Shmup
       return unless can_shoot?
 
       @last_shoot = Gosu.milliseconds
-      Bullet.new(object_pool, self, FireMotion::StrightUp)
+      Bullet.new(object_pool, self, FireMotion::StrightUp, @damage)
     end
 
     def can_shoot?
