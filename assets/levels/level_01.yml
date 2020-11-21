@@ -1,70 +1,119 @@
 enemies:
-  - spawn_time: 1000
+  # first wave
+  - spawn_time: 500
     sprite: spaceShips_001
     offset: 0.5
-    movement: slow
+    movement: none
     fire_motion: none
     health: 250
 
-  - spawn_time: 1250
+  - spawn_time: 750
     sprite: spaceShips_001
-    offset: 0.33
-    movement: slow
-    fire_motion: down
+    offset: 0.75
+    movement: none
+    fire_motion: none
     health: 250
 
-  - spawn_time: 1250
+  - spawn_time: 750
     sprite: spaceShips_001
-    offset: 0.66
-    movement: slow
-    fire_motion: down
+    offset: 0.25
+    movement: none
+    fire_motion: none
     health: 250
 
-  - spawn_time: 1500
+  # second wave
+  - spawn_time: 1600
     sprite: spaceShips_002
-    offset: 0.82
+    offset: 0.7
     movement: south_west
     fire_motion: none
-    health: 100
+    health: 250
 
-  - spawn_time: 1500
+  - spawn_time: 1800
     sprite: spaceShips_002
-    offset: 0.16
+    offset: 0.8
+    movement: south_west
+    fire_motion: none
+    health: 250
+
+  - spawn_time: 2000
+    sprite: spaceShips_002
+    offset: 0.9
+    movement: south_west
+    fire_motion: none
+    health: 250
+
+  - spawn_time: 2200
+    sprite: spaceShips_002
+    offset: 1
+    movement: south_west
+    fire_motion: none
+    health: 250
+
+  # third wave
+
+  - spawn_time: 3000
+    sprite: spaceShips_002
+    offset: 0.4
+    movement: south_east
+    fire_motion: down
+    health: 250
+
+  - spawn_time: 3200
+    sprite: spaceShips_002
+    offset: 0.3
     movement: south_east
     fire_motion: none
-    health: 100
+    health: 250
 
-  - spawn_time: 1500
-    sprite: spaceShips_007
-    offset: 0.5
-    movement: slow_north
+  - spawn_time: 3400
+    sprite: spaceShips_002
+    offset: 0.2
+    movement: south_east
+    fire_motion: down
+    health: 250
+
+  - spawn_time: 3600
+    sprite: spaceShips_002
+    offset: 0.1
+    movement: south_east
     fire_motion: none
+    health: 250
+
+
+  - spawn_time: 4000
+    sprite: spaceShips_003
+    offset: 0.25
+    movement: fast
+    fire_motion: none
+    health: 250
+
+  - spawn_time: 4000
+    sprite: spaceShips_003
+    offset: 0.75
+    movement: fast
+    fire_motion: none
+    health: 250
+
+  - spawn_time: 4500
+    sprite: spaceShips_004
+    offset: 0.33
+    movement: sinus
+    fire_motion: down
     health: 500
 
-  - spawn_time: 1750
-    sprite: spaceShips_002
-    offset: 0.82
-    movement: fast
-    fire_motion: none
-    health: 100
+  - spawn_time: 4500
+    sprite: spaceShips_004
+    offset: 0.66
+    movement: sinus
+    fire_motion: down
+    health: 500
 
-  - spawn_time: 1750
-    sprite: spaceShips_002
-    offset: 0.16
-    movement: fast
-    fire_motion: none
-    health: 100
+  # Boss
 
-  - spawn_time: 2000
-    sprite: spaceShips_002
-    offset: 0.82
-    movement: south_west
-    fire_motion: none
-    health: 100
-
-  - spawn_time: 2000
-    sprite: spaceShips_002
-    offset: 0.16
-    movement: south_east
+  - spawn_time: 6000
+    sprite: spaceShips_007
+    offset: 0.5
+    movement: slow_up
     fire_motion: none
     health: 100

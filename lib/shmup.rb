@@ -21,6 +21,7 @@ module Shmup
       States::GameState.switch(States::PlayState.new)
       $window.show
     rescue => e
+      logger.fatal e.class
       logger.fatal e.full_message
     end
 

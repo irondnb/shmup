@@ -53,7 +53,7 @@ module Shmup
       return unless can_shoot?
 
       @last_shoot = Gosu.milliseconds
-      Bullet.new(object_pool, self, FireMotion::StrightUp, @damage)
+      Bullet.new(object_pool, self, FireMotion::UP, @damage)
     end
 
     def can_shoot?
@@ -61,7 +61,7 @@ module Shmup
     end
 
     def on_collision(object)
-      health.inflict_damage(500) if object.instance_of? Shmup::Enemy::Ship
+      # health.inflict_damage(500) if object.instance_of? Shmup::Enemy::Ship
     end
 
     def dead?

@@ -28,37 +28,17 @@ module Shmup
       private
 
       def movement(name)
-        case name
-        when 'none'
-          Movement::None
-        when 'slow'
-          Movement::Slow
-        when 'fast'
-          Movement::Fast
-        when 'medium'
-          Movement::Medium
-        when 'slow_north'
-          Movement::SlowNorth
-        when 'south_east'
-          Movement::SouthEast
-        when 'south_west'
-          Movement::SouthWest
-        else
-          Movement::None
-        end
+        eval "Movement::#{name.upcase}"
+      rescue NameError => e
+        logger.fatal(e.full_message)
+        Movement::NONE
       end
 
       def fire_motion(name)
-        case name
-        when 'none'
-          FireMotion::None
-        when 'up'
-          FireMotion::StrightUp
-        when 'down'
-          FireMotion::StrightDown
-        else
-          FireMotion::None
-        end
+        eval "FireMotion::#{name.upcase}"
+      rescue NameError => e
+        logger.fatal(e.full_message)
+        FireMotion::NONE
       end
     end
   end

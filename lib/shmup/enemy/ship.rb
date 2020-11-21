@@ -1,7 +1,7 @@
 module Shmup
   module Enemy
     class Ship < Core::GameObject
-      attr_accessor :health, :graphics, :movement, :fire_motion
+      attr_accessor :health, :graphics, :offset, :movement, :fire_motion
 
       def initialize(object_pool, definition)
         super(object_pool, definition.offset, -100)
@@ -9,6 +9,7 @@ module Shmup
         @health = Health.new(self, definition.health)
         @movement = definition.movement
         @fire_motion = definition.fire_motion
+        @offset = definition.offset
       end
 
       def update
@@ -23,7 +24,7 @@ module Shmup
       end
 
       def gun?
-        @gun ||= @fire_motion != Shmup::FireMotion::None
+        @gun ||= @fire_motion != Shmup::FireMotion::NONE
       end
 
       def shoot

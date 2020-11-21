@@ -6,7 +6,7 @@ module Shmup
       attr_reader :object_pool
       attr_accessor :world_speed
 
-      WORLD_SPEED = 8
+      WORLD_SPEED = 5
 
       def initialize
         super
@@ -20,8 +20,6 @@ module Shmup
 
       def update
         unless @player.dead?
-          build_enemies if @enemies.empty?
-
           Enemy::Ship.new(@object_pool, @enemies.shift) if !@enemies.empty? && Gosu.milliseconds >= @enemies.first.spawn_time
           @object_pool.update_all
         end
