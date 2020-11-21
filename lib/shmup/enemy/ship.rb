@@ -1,10 +1,11 @@
 module Shmup
   module Enemy
     class Ship < Core::GameObject
-      attr_accessor :health, :graphics, :offset, :movement, :fire_motion
+      attr_accessor :health, :graphics, :offset, :movement, :fire_motion, :definition
 
       def initialize(object_pool, definition)
         super(object_pool, definition.offset, -100)
+        @definition = definition
         @graphics = Enemy.load_sprite(definition.sprite)
         @health = Health.new(self, definition.health)
         @movement = definition.movement

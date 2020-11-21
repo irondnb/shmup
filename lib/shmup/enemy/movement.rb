@@ -5,7 +5,7 @@ module Shmup
       SLOW = ->(object, world_speed) { object.move(object.x, object.y + world_speed * 1.25) }
       FAST = ->(object, world_speed) { object.move(object.x, object.y + world_speed * 1.5) }
 
-      SLOW_UP = ->(object, world_speed) { object.move(object.x, object.y + world_speed - world_speed * 0.95)}
+      SLOW_UP = ->(object, world_speed) { object.move(object.x, object.y + world_speed  * 0.5)}
       SOUTH_EAST = ->(object, world_speed) { object.move(object.x + world_speed * 0.75, object.y + world_speed * 1.25) }
       SOUTH_WEST = ->(object, world_speed) { object.move(object.x - world_speed * 0.75, object.y + world_speed * 1.25) }
       SINUS = lambda { |object, world_speed|

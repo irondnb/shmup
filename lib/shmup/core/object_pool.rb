@@ -26,7 +26,10 @@ module Shmup
         background.update
         objects.each(&:update)
         objects.reject! do |o|
-          true if o.removable?
+          if o.removable?
+            tree_remove(o)
+            true
+          end
         end
       end
 
