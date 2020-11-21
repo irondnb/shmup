@@ -12,6 +12,11 @@ module Shmup
         new_x = object.offset + (200 * Math.sin(Gosu.milliseconds * 0.1 * Math::PI / 180))
         object.move(new_x, object.y + world_speed * 0.5)
       }
+
+      TEST = lambda { |object, world_speed|
+        new_x = object.offset + (200 * Math.sin(Gosu.milliseconds * 0.1 * Math::PI / 180))
+        object.move(new_x, object.y + world_speed * 0.5)
+      }
     end
   end
 end

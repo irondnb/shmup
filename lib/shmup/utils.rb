@@ -45,27 +45,27 @@ module Shmup
               100)
           i = (i + 1) % 7
         end
+      end
 
-        def point_in_poly(testx, testy, *poly)
-          nvert = poly.size / 2 # Number of vertices in poly
-          vertx = []
-          verty = []
-          poly.each_slice(2) do |x, y|
-            vertx << x
-            verty << y
-          end
-          inside = false
-          j = nvert - 1
-          (0..nvert - 1).each do |i|
-            if ((verty[i] > testy) != (verty[j] > testy)) &&
-               (testx < (vertx[j] - vertx[i]) * (testy - verty[i]) /
-                   (verty[j] - verty[i]) + vertx[i])
-              inside = !inside
-            end
-            j = i
-          end
-          inside
+      def point_in_poly(testx, testy, *poly)
+        nvert = poly.size / 2 # Number of vertices in poly
+        vertx = []
+        verty = []
+        poly.each_slice(2) do |x, y|
+          vertx << x
+          verty << y
         end
+        inside = false
+        j = nvert - 1
+        (0..nvert - 1).each do |i|
+          if ((verty[i] > testy) != (verty[j] > testy)) &&
+              (testx < (vertx[j] - vertx[i]) * (testy - verty[i]) /
+                  (verty[j] - verty[i]) + vertx[i])
+            inside = !inside
+          end
+          j = i
+        end
+        inside
       end
     end
   end

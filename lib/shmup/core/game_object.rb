@@ -26,7 +26,7 @@ module Shmup
 
       def draw
         @components.each(&:draw)
-        Utils.mark_corners(box)
+        Utils.mark_corners(box) if $debug
       end
 
       def effect?

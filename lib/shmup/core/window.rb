@@ -14,6 +14,8 @@ module Shmup
       end
 
       def update
+
+
         Utils.track_update_interval
         @state.update
       end

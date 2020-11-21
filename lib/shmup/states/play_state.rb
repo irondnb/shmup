@@ -20,7 +20,7 @@ module Shmup
 
       def update
         unless @player.dead?
-          Enemy::Ship.new(@object_pool, @enemies.shift) if !@enemies.empty? && Gosu.milliseconds >= @enemies.first.spawn_time
+          spawn_enemy if enemy_ready?
           @object_pool.update_all
         end
       end
@@ -32,15 +32,30 @@ module Shmup
       end
 
       def button_down(id)
-        $window.close if id == Gosu::KbEscape
+        $window.close! if id == Gosu::KbEscape
         toggle_profiling if id == Gosu::KbF2
-        toggle_profiling if id == Gosu::KbF2
+        $debug = !$debug if id == Gosu::KbF1
+      end
+
+      def leave
+        if @profiling_now
+          toggle_profiling
+        end
+        puts "Pool: #{@object_pool.objects.size}"
       end
 
       private
 
+      def spawn_enemy
+        Enemy::Ship.new(@object_pool, @enemies.shift)
+      end
+
+      def enemy_ready?
+        !@enemies.empty? && Gosu.milliseconds >= @enemies.first.spawn_time
+      end
+
       def load_enemies
-        YAML.safe_load(File.open(Utils.level_path('01')))['enemies']
+        YAML.safe_load(File.open(Utils.level_path('02')))['enemies']
       end
 
       def build_enemies
