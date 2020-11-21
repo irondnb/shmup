@@ -19,6 +19,7 @@ module Shmup
             e['sprite'],
             e['offset'] * $window.width,
             movement(e['movement']),
+            fire_motion(e['fire_motion']),
             e['health']
           )
         end
@@ -30,12 +31,33 @@ module Shmup
         case name
         when 'none'
           Movement::None
+        when 'slow'
+          Movement::Slow
         when 'fast'
           Movement::Fast
         when 'medium'
           Movement::Medium
+        when 'slow_north'
+          Movement::SlowNorth
+        when 'south_east'
+          Movement::SouthEast
+        when 'south_west'
+          Movement::SouthWest
         else
           Movement::None
+        end
+      end
+
+      def fire_motion(name)
+        case name
+        when 'none'
+          FireMotion::None
+        when 'up'
+          FireMotion::StrightUp
+        when 'down'
+          FireMotion::StrightDown
+        else
+          FireMotion::None
         end
       end
     end

@@ -7,8 +7,8 @@ module Shmup
       super(object_pool, *spawn_point)
       @velocity = 10
       @health = Health.new(self, 500)
-      @fire_rate = 400
-      @damage = 300
+      @fire_rate = 600
+      @damage = 500
     end
 
     def update

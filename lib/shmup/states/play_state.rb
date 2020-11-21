@@ -3,9 +3,10 @@ module Shmup
     class PlayState < GameState
       require 'yaml'
 
-      attr_reader :object_pool, :world_speed
+      attr_reader :object_pool
+      attr_accessor :world_speed
 
-      WORLD_SPEED = 10
+      WORLD_SPEED = 8
 
       def initialize
         super
@@ -20,6 +21,7 @@ module Shmup
       def update
         unless @player.dead?
           build_enemies if @enemies.empty?
+
           Enemy::Ship.new(@object_pool, @enemies.shift) if !@enemies.empty? && Gosu.milliseconds >= @enemies.first.spawn_time
           @object_pool.update_all
         end
@@ -44,7 +46,7 @@ module Shmup
       end
 
       def build_enemies
-        @enemies = Enemy.build_definitions(load_enemies, time_offset: Gosu.milliseconds)
+        @enemies = Enemy.build_definitions(load_enemies, time_offset: Gosu.milliseconds + 1000)
       end
 
       def toggle_profiling

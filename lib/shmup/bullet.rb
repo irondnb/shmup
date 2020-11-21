@@ -13,7 +13,7 @@ module Shmup
     def update
       motion.call(self, object_pool.world_speed)
       mark_for_removal if y.negative?
-      objects = object_pool.nearby(self, 50)
+      objects = object_pool.nearby(self, 25)
       objects.each do |obj|
         next if obj == source || obj.instance_of?(Shmup::Bullet)
 
