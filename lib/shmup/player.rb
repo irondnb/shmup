@@ -30,23 +30,23 @@ module Shmup
     end
 
     def move_up
-      @y -= velocity
-      @y = min_height if @y < min_height
+      move(x, @y -= velocity)
+      move(x, min_height) if @y < min_height
     end
 
     def move_down
-      @y += velocity
-      @y = max_height if @y > max_height
+      move(x, @y += velocity)
+      move(x, max_height) if @y > max_height
     end
 
     def move_left
-      @x -= velocity
-      @x = min_width if @x < min_width
+      move(@x -= velocity, y)
+      move(min_width, y) if @x < min_width
     end
 
     def move_right
-      @x += velocity
-      @x = max_width if @x > max_width
+      move(@x += velocity, y)
+      move(max_width, y) if @x > max_width
     end
 
     def shoot
