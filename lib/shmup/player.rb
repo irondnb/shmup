@@ -52,7 +52,7 @@ module Shmup
       return unless can_shoot?
 
       @last_shoot = Gosu.milliseconds
-      Bullet.new(object_pool, self)
+      Bullet.new(object_pool, self, FireMotion::StrightUp)
     end
 
     def can_shoot?

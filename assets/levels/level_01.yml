@@ -3,23 +3,29 @@ enemies:
     sprite: spaceShips_001
     offset: 0.5
     movement: none
+    health: 250
   - spawn_time: 1250
     sprite: spaceShips_001
     offset: 0.33
     movement: none
+    health: 250
   - spawn_time: 1250
     sprite: spaceShips_001
     offset: 0.66
     movement: none
+    health: 250
   - spawn_time: 1500
     sprite: spaceShips_002
     offset: 0.82
     movement: fast
+    health: 100
   - spawn_time: 1500
     sprite: spaceShips_002
     offset: 0.16
     movement: fast
+    health: 100
   - spawn_time: 1500
-    sprite: spaceShips_003
+    sprite: spaceShips_007
     offset: 0.5
     movement: none
+    health: 500

@@ -10,6 +10,7 @@ require 'logger'
   player
   enemy
   health
+  fire_motion
 ].each { |filename| require "shmup/#{filename}" }
 
 module Shmup
