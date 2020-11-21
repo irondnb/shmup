@@ -16,7 +16,7 @@ module Shmup
         @object_pool.world_speed = WORLD_SPEED
         @background = Background.new(@object_pool)
         @player = Player.new(@object_pool)
-        @game_over = Gosu::Image.from_text('Game Over', 120)
+        @hud = Hud.new(@player)
         build_enemies
       end
 
@@ -30,7 +30,7 @@ module Shmup
       def draw
         @background.draw
         @object_pool.objects.each(&:draw)
-        @game_over.draw_rot($window.width / 2, $window.height / 2, 1, 0) if @player.dead?
+        @hud.draw
       end
 
       def button_down(id)

@@ -71,11 +71,4 @@ module Shmup
       end
     end
   end
-
-  module ZOrder
-    BACKGROUND = 0
-    BULLET = 1
-    ENEMY = 2
-    PLAYER = 3
-  end
 end

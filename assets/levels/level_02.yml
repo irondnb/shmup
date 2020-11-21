@@ -4,25 +4,25 @@ enemies:
     sprite: spaceShips_001
     offset: 0.25
     movement: cos
-    fire_motion: down
+    fire_motion: none
     health: 250
 
   - spawn_time: 1000
     sprite: spaceShips_001
     offset: 0.75
     movement: cos
-    fire_motion: down
+    fire_motion: none
     health: 250
 
-  - spawn_time: 1500
-    sprite: spaceShips_001
+  - spawn_time: 2000
+    sprite: spaceShips_002
     offset: 0.25
     movement: sin
     fire_motion: down
     health: 250
 
-  - spawn_time: 1500
-    sprite: spaceShips_001
+  - spawn_time: 2000
+    sprite: spaceShips_002
     offset: 0.75
     movement: sin
     fire_motion: down

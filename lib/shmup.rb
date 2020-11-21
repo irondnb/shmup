@@ -14,6 +14,9 @@ require 'logger'
   health
   fire_motion
   explosion
+  hud
+  stats
+  z_order
 ].each { |filename| require "shmup/#{filename}" }
 
 module Shmup

@@ -31,7 +31,7 @@ module Shmup
     def hit(obj)
       return unless obj.respond_to?(:health)
 
-      obj.health.inflict_damage(damage)
+      obj.health.inflict_damage(damage, source)
       mark_for_removal
     end
   end
