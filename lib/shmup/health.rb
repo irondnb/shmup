@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   class Health < Core::Component
     attr_accessor :health

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   class Bullet < Core::GameObject
     attr_reader :source, :graphics, :motion, :damage
@@ -28,6 +30,7 @@ module Shmup
 
     def hit(obj)
       return unless obj.respond_to?(:health)
+
       obj.health.inflict_damage(damage)
       mark_for_removal
     end

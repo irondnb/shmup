@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   module Core
     class Window < Gosu::Window
@@ -5,8 +7,8 @@ module Shmup
 
       attr_reader :game
 
-      WIDTH = 960 #480
-      HEIGHT = 1280 #640
+      WIDTH = 960 # 480
+      HEIGHT = 1280 # 640
       FULLSCREEN = false
 
       def initialize
@@ -14,8 +16,6 @@ module Shmup
       end
 
       def update
-
-
         Utils.track_update_interval
         @state.update
       end

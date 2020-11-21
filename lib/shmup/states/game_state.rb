@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Shmup
   module States
     class GameState
-
       def self.switch(new_state)
         $window.state&.leave
         $window.state = new_state

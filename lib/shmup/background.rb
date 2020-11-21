@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   class Background
     attr_reader :game, :graphics, :position

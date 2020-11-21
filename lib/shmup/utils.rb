@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 module Shmup
   module Utils
-
     DEBUG_COLORS = [
-        Gosu::Color::AQUA,
-        Gosu::Color::RED,
-        Gosu::Color::GREEN,
-        Gosu::Color::BLUE,
-        Gosu::Color::YELLOW,
-        Gosu::Color::FUCHSIA,
-        Gosu::Color::CYAN
+      Gosu::Color::AQUA,
+      Gosu::Color::RED,
+      Gosu::Color::GREEN,
+      Gosu::Color::BLUE,
+      Gosu::Color::YELLOW,
+      Gosu::Color::FUCHSIA,
+      Gosu::Color::CYAN
     ].freeze
 
     class << self
@@ -17,7 +18,7 @@ module Shmup
       end
 
       def assets_path
-        @assets_path ||= File.expand_path('../../../assets', __FILE__)
+        @assets_path ||= File.expand_path('../../assets', __dir__)
       end
 
       def level_path(id)
@@ -39,10 +40,11 @@ module Shmup
         box.each_slice(2) do |x, y|
           color = DEBUG_COLORS[i]
           $window.draw_triangle(
-              x - 5, y - 5, color,
-              x,     y,     color,
-              x + 5, y - 5, color,
-              100)
+            x - 5, y - 5, color,
+            x,     y,     color,
+            x + 5, y - 5, color,
+            100
+          )
           i = (i + 1) % 7
         end
       end
@@ -59,8 +61,8 @@ module Shmup
         j = nvert - 1
         (0..nvert - 1).each do |i|
           if ((verty[i] > testy) != (verty[j] > testy)) &&
-              (testx < (vertx[j] - vertx[i]) * (testy - verty[i]) /
-                  (verty[j] - verty[i]) + vertx[i])
+             (testx < (vertx[j] - vertx[i]) * (testy - verty[i]) /
+                 (verty[j] - verty[i]) + vertx[i])
             inside = !inside
           end
           j = i

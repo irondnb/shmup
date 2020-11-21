@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gosu'
 require 'logger'
 
@@ -20,13 +22,13 @@ module Shmup
       $window = Core::Window.new
       States::GameState.switch(States::PlayState.new)
       $window.show
-    rescue => e
+    rescue StandardError => e
       logger.fatal e.class
       logger.fatal e.full_message
     end
 
     def logger
-      @@logger ||= Logger.new(STDOUT)
+      @@logger ||= Logger.new($stdout)
     end
   end
 end

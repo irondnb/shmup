@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   class Player < Core::GameObject
     attr_accessor :graphics, :velocity, :health
@@ -13,11 +15,11 @@ module Shmup
 
     def update
       super
-      move_up    if Gosu::button_down?(Gosu::KbUp)
-      move_left  if Gosu::button_down?(Gosu::KbLeft)
-      move_right if Gosu::button_down?(Gosu::KbRight)
-      move_down  if Gosu::button_down?(Gosu::KbDown)
-      shoot      if Gosu::button_down?(Gosu::KbSpace)
+      move_up    if Gosu.button_down?(Gosu::KbUp)
+      move_left  if Gosu.button_down?(Gosu::KbLeft)
+      move_right if Gosu.button_down?(Gosu::KbRight)
+      move_down  if Gosu.button_down?(Gosu::KbDown)
+      shoot      if Gosu.button_down?(Gosu::KbSpace)
 
       object_pool.nearby(self, 150).each do |obj|
         dist = Gosu.distance(x, y, obj.x, obj.y)
@@ -62,7 +64,7 @@ module Shmup
     end
 
     def on_collision(object)
-      #health.inflict_damage(500) if object.instance_of? Shmup::Enemy::Ship
+      # health.inflict_damage(500) if object.instance_of? Shmup::Enemy::Ship
     end
 
     def dead?
@@ -72,7 +74,7 @@ module Shmup
     private
 
     def spawn_point
-      [$window.width  / 2,  $window.height - 200]
+      [$window.width / 2, $window.height - 200]
     end
 
     def width

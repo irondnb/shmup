@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 %w[
   game_state
   play_state

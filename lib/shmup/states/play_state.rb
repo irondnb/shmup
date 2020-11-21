@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   module States
     class PlayState < GameState
@@ -14,7 +16,7 @@ module Shmup
         @object_pool.world_speed = WORLD_SPEED
         @background = Background.new(@object_pool)
         @player = Player.new(@object_pool)
-        @game_over = Gosu::Image.from_text("Game Over", 120)
+        @game_over = Gosu::Image.from_text('Game Over', 120)
         build_enemies
       end
 
@@ -38,9 +40,7 @@ module Shmup
       end
 
       def leave
-        if @profiling_now
-          toggle_profiling
-        end
+        toggle_profiling if @profiling_now
         puts "Pool: #{@object_pool.objects.size}"
       end
 
@@ -67,7 +67,7 @@ module Shmup
         if @profiling_now
           result = RubyProf.stop
           printer = RubyProf::FlatPrinter.new(result)
-          printer.print(STDOUT)
+          printer.print($stdout)
           @profiling_now = false
         else
           RubyProf.start

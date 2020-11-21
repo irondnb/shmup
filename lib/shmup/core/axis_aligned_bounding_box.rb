@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   module Core
     class AxisAlignedBoundingBox
@@ -39,4 +41,3 @@ module Shmup
     end
   end
 end
-

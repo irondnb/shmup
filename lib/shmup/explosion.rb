@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Shmup
   class Explosion < Core::GameObject
     attr_accessor :x, :y
 
-    FRAME_DELAY = 8.33# ms
+    FRAME_DELAY = 8.33 # ms
 
     def initialize(object_pool, x, y)
       super(object_pool, x, y)
@@ -46,7 +48,8 @@ module Shmup
 
     def animation
       @@animation ||= Gosu::Image.load_tiles(
-          Utils.asset_path('sprites/explosion.png'), 256, 256, tileable: false)
+        Utils.asset_path('sprites/explosion.png'), 256, 256, tileable: false
+      )
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   module Core
     class Quadtree
@@ -69,21 +71,28 @@ module Shmup
         @nw = self.class.new(
           AxisAlignedBoundingBox.new(
             [cx - hhx, cy - hhy],
-            [cx, cy]))
+            [cx, cy]
+          )
+        )
         @ne = self.class.new(
           AxisAlignedBoundingBox.new(
             [cx + hhx, cy - hhy],
-            [cx, cy]))
+            [cx, cy]
+          )
+        )
         @sw = self.class.new(
           AxisAlignedBoundingBox.new(
             [cx - hhx, cy + hhy],
-            [cx, cy]))
+            [cx, cy]
+          )
+        )
         @se = self.class.new(
           AxisAlignedBoundingBox.new(
             [cx + hhx, cy + hhy],
-            [cx, cy]))
+            [cx, cy]
+          )
+        )
       end
     end
   end
 end
-
