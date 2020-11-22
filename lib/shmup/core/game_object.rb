@@ -30,6 +30,7 @@ module Shmup
 
       # callbacks
       def before_update; end
+
       def after_update; end
 
       def draw

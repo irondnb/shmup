@@ -2,7 +2,6 @@
 
 module Shmup
   class Hit < Effect
-    
     private
 
     def animation

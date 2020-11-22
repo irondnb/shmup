@@ -2,7 +2,6 @@
 
 module Shmup
   class Explosion < Effect
-
     private
 
     def animation

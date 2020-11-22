@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module Shmup
   class Stats
     attr_reader :kills, :deaths, :changed_at
+
     def initialize
       @kills = @damage = 0
       changed

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   module Enemy
     class Graphics < Core::Component

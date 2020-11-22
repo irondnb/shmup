@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   class Effect < Core::GameObject
     FRAME_DELAY = 8.33 # ms

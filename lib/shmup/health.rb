@@ -25,11 +25,9 @@ module Shmup
     end
 
     def inflict_damage(amount, cause)
-      if @health > 0
+      if @health.positive?
         @health_updated = true
-        if cause.respond_to?(:stats)
-          cause.stats.add_damage(amount)
-        end
+        cause.stats.add_damage(amount) if cause.respond_to?(:stats)
         @health = [@health - amount.to_i, 0].max
         after_death(cause) if dead?
       end
@@ -50,9 +48,7 @@ module Shmup
     end
 
     def after_death(cause)
-      if @explodes
-        Explosion.new(@object_pool, x, y)
-      end
+      Explosion.new(@object_pool, x, y) if @explodes
       cause.stats.add_kill if cause.respond_to?(:stats)
       object.mark_for_removal
     end

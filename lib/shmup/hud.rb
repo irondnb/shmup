@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   class Hud
     attr_reader :ship

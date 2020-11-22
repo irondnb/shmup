@@ -1,11 +1,8 @@
+# frozen_string_literal: true
+
 module Shmup
   module Player
     class Input < Core::Component
-
-      def initialize(game_object)
-        super(game_object)
-      end
-
       def update
         object.physics.move_up    if Gosu.button_down?(Gosu::KbUp)
         object.physics.move_left  if Gosu.button_down?(Gosu::KbLeft)

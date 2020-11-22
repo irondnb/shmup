@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   module Player
     class Player < Core::GameObject
@@ -8,7 +10,7 @@ module Shmup
       def initialize(object_pool)
         super(object_pool, *spawn_point)
 
-        @graphics = Graphics.new(self) #
+        @graphics = Graphics.new(self)
         @physics = Physics.new(self, object_pool)
         @health = Health.new(self, object_pool, HEALTH, true)
         @input = Input.new(self)
@@ -43,7 +45,6 @@ module Shmup
       def spawn_point
         [$window.width / 2, $window.height - 200]
       end
-
     end
   end
 end
