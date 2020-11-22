@@ -32,6 +32,7 @@ module Shmup
       return unless obj.respond_to?(:health)
 
       obj.health.inflict_damage(damage, source)
+      Hit.new(object_pool, x, y)
       mark_for_removal
     end
   end

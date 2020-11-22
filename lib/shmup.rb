@@ -13,7 +13,7 @@ require 'logger'
   enemy
   effect
   explosion
-
+  hit
   health
   fire_motion
   explosion

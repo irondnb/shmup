@@ -2,28 +2,28 @@ enemies:
   # first wave
   - spawn_time: 1000
     sprite: spaceShips_001
-    offset: 0.25
+    offset: 0.5
     movement: cos
     fire_motion: none
-    health: 250
+    health: 500
 
-  - spawn_time: 1000
+  - spawn_time: 1500
     sprite: spaceShips_001
-    offset: 0.75
+    offset: 0.5
     movement: cos
     fire_motion: none
-    health: 250
+    health: 500
 
   - spawn_time: 2000
     sprite: spaceShips_002
-    offset: 0.25
+    offset: 0.5
     movement: sin
     fire_motion: down
-    health: 250
+    health: 500
 
-  - spawn_time: 2000
+  - spawn_time: 2500
     sprite: spaceShips_002
-    offset: 0.75
+    offset: 0.5
     movement: sin
     fire_motion: down
-    health: 250
+    health: 500
