@@ -18,7 +18,7 @@ module Shmup
           @stats = Stats.new
 
           @velocity = 10
-          @fire_rate = 600
+          @fire_rate = 300
           @damage = 300
         end
 
