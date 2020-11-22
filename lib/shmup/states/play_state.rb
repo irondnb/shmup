@@ -28,7 +28,6 @@ module Shmup
         @player = Entities::Player.new(@object_pool)
         @boss = Entities::Enemy.build_boss(settings.boss)
         @hud = Hud.new(self)
-
       end
 
       def update

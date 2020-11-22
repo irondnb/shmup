@@ -1,33 +1,11 @@
 name: "Level 2"
 world_speed: 5
 time: 5000
-boss: false
+boss:
+  spawn_time: 0
+  sprite: spaceShips_007
+  offset: 0.5
+  movement: boss
+  fire_motion: none
+  health: 5000
 enemies:
-  # first wave
-  - spawn_time: 1000
-    sprite: spaceShips_001
-    offset: 0.5
-    movement: cos
-    fire_motion: none
-    health: 500
-
-  - spawn_time: 1500
-    sprite: spaceShips_001
-    offset: 0.5
-    movement: cos
-    fire_motion: none
-    health: 500
-
-  - spawn_time: 2000
-    sprite: spaceShips_002
-    offset: 0.5
-    movement: sin
-    fire_motion: down
-    health: 500
-
-  - spawn_time: 2500
-    sprite: spaceShips_002
-    offset: 0.5
-    movement: sin
-    fire_motion: down
-    health: 500

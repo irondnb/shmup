@@ -35,17 +35,24 @@ module Shmup
       end
 
       def draw
+        return unless draw?
+
         @image.draw(x - @image.width / 2, y - object.graphics.height / 2 - @image.height, 100)
       end
 
       protected
 
+      def draw?
+        $debug
+      end
+
       def update_image
-        return unless @health_updated
+        return unless draw?
 
         text = @health.to_s
         font_size = 18
         @image = Gosu::Image.from_text(text, font_size)
+        @health_updated = false
       end
 
       def after_death(cause)

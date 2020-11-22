@@ -17,6 +17,8 @@ module Shmup
         end
 
         def build(enemies)
+          return [] unless enemies
+
           enemies.map do |enemy|
             Definition.new(*enemy.values)
           end
