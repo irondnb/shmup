@@ -4,10 +4,12 @@ module Shmup
   class Health < Core::Component
     attr_accessor :health
 
-    def initialize(object, health)
+    def initialize(object, object_pool, health, explodes)
       super(object)
+      @object_pool = object_pool
       @health, @initial_health = health
       @health_updated = true
+      @explodes = explodes
     end
 
     def dead?
@@ -31,8 +33,6 @@ module Shmup
         @health = [@health - amount.to_i, 0].max
         after_death(cause) if dead?
       end
-
-
     end
 
     def draw
@@ -50,6 +50,9 @@ module Shmup
     end
 
     def after_death(cause)
+      if @explodes
+        Explosion.new(@object_pool, x, y)
+      end
       cause.stats.add_kill if cause.respond_to?(:stats)
       object.mark_for_removal
     end

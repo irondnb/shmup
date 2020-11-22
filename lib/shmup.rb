@@ -11,6 +11,9 @@ require 'logger'
   states
   player
   enemy
+  effect
+  explosion
+
   health
   fire_motion
   explosion

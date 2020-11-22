@@ -23,8 +23,14 @@ module Shmup
       end
 
       def update
+        before_update
         @components.each(&:update)
+        after_update
       end
+
+      # callbacks
+      def before_update; end
+      def after_update; end
 
       def draw
         @components.each(&:draw)

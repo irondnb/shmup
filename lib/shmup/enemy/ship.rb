@@ -3,33 +3,25 @@
 module Shmup
   module Enemy
     class Ship < Core::GameObject
-      attr_accessor :health, :graphics, :offset, :movement, :fire_motion, :definition
+      attr_reader :health, :graphics, :physics, :definition
 
       def initialize(object_pool, definition)
         super(object_pool, definition.offset, -100)
         @definition = definition
-        @graphics = Enemy.load_sprite(definition.sprite)
-        @health = Health.new(self, definition.health)
-        @movement = definition.movement
+        @graphics = Graphics.new(self, definition)
+        @physics = Physics.new(self, object_pool, definition)
+        @health = Health.new(self, object_pool, definition.health, true)
         @fire_motion = definition.fire_motion
-        @offset = definition.offset
         @damage = 100 # definition.damage
       end
 
-      def update
-        super
-        @movement.call(self, object_pool.world_speed)
-        shoot if gun?
-        mark_for_removal if @y > $window.height || dead?
+      def after_update
+        shoot
+        destroy if behind_screen?
       end
 
-      def draw
-        super
-        @graphics.draw_rot(x, y, 1, ZOrder::ENEMY)
-      end
-
-      def gun?
-        @gun ||= @fire_motion != Shmup::FireMotion::NONE
+      def offset
+        physics.offset
       end
 
       def shoot
@@ -39,17 +31,22 @@ module Shmup
         Bullet.new(object_pool, self, @fire_motion, @damage)
       end
 
+      private
+
       def can_shoot?
-        Gosu.milliseconds > (@last_shoot || 0) + 500
+        @fire_motion != Shmup::FireMotion::NONE && Gosu.milliseconds > (@last_shoot || 0) + 500
       end
 
-      def dead?
+      def killed?
         health.dead?
       end
 
-      def mark_for_removal
-        super
-        Explosion.new(object_pool, x, y) if dead?
+      def destroy
+        mark_for_removal
+      end
+
+      def behind_screen?
+        y > $window.height
       end
     end
   end

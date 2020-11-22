@@ -4,6 +4,8 @@
   definition
   movement
   ship
+  graphics
+  physics
 ].each { |filename| require "shmup/enemy/#{filename}" }
 
 module Shmup

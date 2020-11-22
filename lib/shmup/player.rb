@@ -4,11 +4,13 @@ module Shmup
   class Player < Core::GameObject
     attr_reader :graphics, :velocity, :health, :stats
 
+    HEALTH = 500
+
     def initialize(object_pool)
       @graphics = Gosu::Image.new(Utils.asset_path('/sprites/player_ship_blue.png'), tileable: false)
       super(object_pool, *spawn_point)
       @velocity = 10
-      @health = Health.new(self, 500)
+      @health = Health.new(self, object_pool, HEALTH, true)
       @stats = Stats.new
       @fire_rate = 600
       @damage = 300
