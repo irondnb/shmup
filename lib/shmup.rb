@@ -14,7 +14,7 @@ module Shmup
   class << self
     def start
       $window = Core::Window.new
-      level = YAML.safe_load(File.open(Utils.level_path('01')))
+      level = YAML.safe_load(File.open(Utils.level_path('02')))
       States::GameState.switch(States::PlayState.build(level))
       $window.show
     rescue StandardError => e

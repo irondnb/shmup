@@ -30,9 +30,6 @@ module Shmup
       end
 
       def update
-        if @player.dead?
-          lost!
-        end
 
         spawn_enemy if spawn_enemy?
 
@@ -41,6 +38,10 @@ module Shmup
           win! if @boss_entity&.dead?
         else
           win! if settings.time && Gosu.milliseconds >= settings.time
+        end
+
+        if !win? && @player.dead?
+          lost!
         end
 
         @object_pool.update_all
