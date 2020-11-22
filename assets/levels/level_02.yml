@@ -1,3 +1,7 @@
+name: "Level 2"
+world_speed: 5
+time: 5000
+boss: false
 enemies:
   # first wave
   - spawn_time: 1000

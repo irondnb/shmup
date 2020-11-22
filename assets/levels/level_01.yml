@@ -1,3 +1,6 @@
+name: "Level 1"
+world_speed: 5
+time: 8000
 enemies:
   # first wave
   - spawn_time: 500
@@ -98,22 +101,22 @@ enemies:
   - spawn_time: 4500
     sprite: spaceShips_004
     offset: 0.33
-    movement: sinus
+    movement: sin
     fire_motion: down
     health: 500
 
   - spawn_time: 4500
     sprite: spaceShips_004
     offset: 0.66
-    movement: sinus
+    movement: sin
     fire_motion: down
     health: 500
 
   # Boss
-
-  - spawn_time: 6000
-    sprite: spaceShips_007
-    offset: 0.5
-    movement: slow_up
-    fire_motion: none
-    health: 100
+boss:
+  spawn_time: 6000
+  sprite: spaceShips_007
+  offset: 0.5
+  movement: none
+  fire_motion: none
+  health: 1000

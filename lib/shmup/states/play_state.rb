@@ -5,23 +5,44 @@ module Shmup
     class PlayState < GameState
       require 'yaml'
 
-      attr_reader :object_pool
+      attr_reader :object_pool, :player, :enemies, :settings
       attr_accessor :world_speed
 
-      WORLD_SPEED = 5
+      Settings = Struct.new(:name, :world_speed, :time, :enemies, :boss)
 
-      def initialize
-        super
+      def self.build(config)
+        settings = Settings.new(config['name'], config['world_speed'], config['time'], config['enemies'], config['boss'])
+
+        new(settings)
+      end
+
+      def initialize(settings)
+        @settings = settings
         @object_pool = Core::ObjectPool.new
-        @object_pool.world_speed = WORLD_SPEED
+        @object_pool.world_speed = settings.world_speed
+
         @background = Entities::Background.new(@object_pool)
+        @enemies = Entities::Enemy.build(settings.enemies)
         @player = Entities::Player.new(@object_pool)
-        @hud = Hud.new(@player)
-        build_enemies
+        @boss = Entities::Enemy.build_boss(settings.boss)
+        @hud = Hud.new(self)
+
       end
 
       def update
-        spawn_enemy if enemy_ready?
+        if @player.dead?
+          lost!
+        end
+
+        spawn_enemy if spawn_enemy?
+
+        if @boss
+          spawn_boss if spawn_boss?
+          win! if @boss_entity&.dead?
+        else
+          win! if settings.time && Gosu.milliseconds >= settings.time
+        end
+
         @object_pool.update_all
       end
 
@@ -32,7 +53,7 @@ module Shmup
       end
 
       def button_down(id)
-        $window.close! if id == Gosu::KbEscape
+        GameState.switch(MenuState.instance) if id == Gosu::KbEscape
         toggle_profiling if id == Gosu::KbF2
         $debug = !$debug if id == Gosu::KbF1
       end
@@ -42,22 +63,45 @@ module Shmup
         puts "Pool: #{@object_pool.objects.size}"
       end
 
-      private
-
-      def spawn_enemy
-        Entities::Enemy.new(@object_pool, @enemies.shift)
+      def win?
+        @win
       end
 
-      def enemy_ready?
+      def lost?
+        @lost
+      end
+
+      private
+
+      def win!
+        @win = true
+      end
+
+      def lost!
+        @lost = true
+      end
+
+      def spawn_enemy
+        Entities::Enemy.spawn(@object_pool, @enemies.shift)
+      end
+
+      def spawn_boss
+        @boss_entity = Entities::Enemy.spawn(@object_pool, @boss)
+      end
+
+      def spawn_enemy?
         !@enemies.empty? && Gosu.milliseconds >= @enemies.first.spawn_time
       end
 
+      def spawn_boss?
+        Gosu.milliseconds >= @boss.spawn_time && @boss_entity.nil?
+      end
+
       def load_enemies
-        YAML.safe_load(File.open(Utils.level_path('02')))['enemies']
+        ['enemies']
       end
 
       def build_enemies
-        @enemies = Entities::Enemy.build_definitions(load_enemies, time_offset: Gosu.milliseconds + 1000)
       end
 
       def toggle_profiling

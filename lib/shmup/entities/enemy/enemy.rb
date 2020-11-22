@@ -32,14 +32,14 @@ module Shmup
           Bullet.new(object_pool, self, @fire_motion, @damage)
         end
 
+        def dead?
+          health.dead?
+        end
+
         private
 
         def can_shoot?
           @fire_motion != Shmup::FireMotion::NONE && Gosu.milliseconds > (@last_shoot || 0) + 500
-        end
-
-        def killed?
-          health.dead?
         end
 
         def destroy

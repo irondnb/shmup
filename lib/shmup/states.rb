@@ -3,6 +3,7 @@
 %w[
   game_state
   play_state
+  menu_state
 ].each { |filename| require "shmup/states/#{filename}" }
 
 module Shmup
