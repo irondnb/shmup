@@ -8,6 +8,7 @@ module Shmup
       attr_reader :object_pool, :player, :enemies, :settings
       attr_accessor :world_speed
 
+      SWITCH_DELAY = 3000
       Settings = Struct.new(:name, :world_speed, :time, :enemies, :boss)
 
       def self.build(config)
@@ -15,6 +16,7 @@ module Shmup
 
         new(settings)
       end
+
 
       def initialize(settings)
         @settings = settings
@@ -30,6 +32,12 @@ module Shmup
       end
 
       def update
+        if win? || lost?
+          @switch_delay ||= Gosu.milliseconds
+          if Gosu.milliseconds - @switch_delay >= SWITCH_DELAY
+            GameState.switch(MenuState.instance)
+          end
+        end
 
         spawn_enemy if spawn_enemy?
 
