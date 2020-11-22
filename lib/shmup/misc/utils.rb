@@ -18,7 +18,7 @@ module Shmup
       end
 
       def assets_path
-        @assets_path ||= File.expand_path('../../assets', __dir__)
+        @assets_path ||= File.expand_path('../../../assets', __dir__)
       end
 
       def level_path(id)

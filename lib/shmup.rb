@@ -5,22 +5,11 @@ require 'logger'
 
 %w[
   core
-  utils
-  background
-  bullet
   states
-  player
-  enemy
-  effect
-  explosion
-  hit
-  health
-  fire_motion
-  explosion
-  hud
-  stats
-  z_order
+  entities
+  misc
 ].each { |filename| require "shmup/#{filename}" }
+
 
 module Shmup
   class << self

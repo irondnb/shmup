@@ -14,8 +14,8 @@ module Shmup
         super
         @object_pool = Core::ObjectPool.new
         @object_pool.world_speed = WORLD_SPEED
-        @background = Background.new(@object_pool)
-        @player = Player.new(@object_pool)
+        @background = Entities::Background.new(@object_pool)
+        @player = Entities::Player.new(@object_pool)
         @hud = Hud.new(@player)
         build_enemies
       end
@@ -45,7 +45,7 @@ module Shmup
       private
 
       def spawn_enemy
-        Enemy.new(@object_pool, @enemies.shift)
+        Entities::Enemy.new(@object_pool, @enemies.shift)
       end
 
       def enemy_ready?
@@ -57,7 +57,7 @@ module Shmup
       end
 
       def build_enemies
-        @enemies = Enemy.build_definitions(load_enemies, time_offset: Gosu.milliseconds + 1000)
+        @enemies = Entities::Enemy.build_definitions(load_enemies, time_offset: Gosu.milliseconds + 1000)
       end
 
       def toggle_profiling
