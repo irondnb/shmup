@@ -2,7 +2,7 @@
 
 module Shmup
   module Enemy
-    class Ship < Core::GameObject
+    class Enemy < Core::GameObject
       attr_reader :health, :graphics, :physics, :definition
 
       def initialize(object_pool, definition)

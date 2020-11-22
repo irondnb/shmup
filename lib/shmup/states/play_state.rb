@@ -21,10 +21,8 @@ module Shmup
       end
 
       def update
-        unless @player.dead?
-          spawn_enemy if enemy_ready?
-          @object_pool.update_all
-        end
+        spawn_enemy if enemy_ready?
+        @object_pool.update_all
       end
 
       def draw
@@ -47,7 +45,7 @@ module Shmup
       private
 
       def spawn_enemy
-        Enemy::Ship.new(@object_pool, @enemies.shift)
+        Enemy.new(@object_pool, @enemies.shift)
       end
 
       def enemy_ready?

@@ -3,7 +3,7 @@
 %w[
   definition
   movement
-  ship
+  enemy
   graphics
   physics
 ].each { |filename| require "shmup/enemy/#{filename}" }
@@ -11,9 +11,8 @@
 module Shmup
   module Enemy
     class << self
-      def load_sprite(name)
-        @sprites ||= {}
-        @sprites[name] ||= Gosu::Image.new(Utils.asset_path("/sprites/enemy/#{name}.png"), tileable: false)
+      def new(object_pool, definition)
+        Enemy.new(object_pool, definition)
       end
 
       def build_definitions(enemy_list, time_offset: 0)

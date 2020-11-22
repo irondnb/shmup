@@ -1,13 +1,13 @@
 module Shmup
-  module Enemy
+  module Player
     class Graphics < Core::Component
-      def initialize(game_object, definition)
+      def initialize(game_object)
         super(game_object)
-        @sprite = Gosu::Image.new(Utils.asset_path("/sprites/enemy/#{definition.sprite}.png"), tileable: false)
+        @sprite = Gosu::Image.new(Utils.asset_path('/sprites/player_ship_blue.png'), tileable: false)
       end
 
       def draw
-        @sprite.draw_rot(x, y, 1, ZOrder::PLAYER)
+        @sprite.draw_rot(x, y, 1, ZOrder::ENEMY)
       end
 
       def width
