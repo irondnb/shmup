@@ -8,6 +8,7 @@ module Shmup
       def initialize(object_pool, x, y)
         super(object_pool, x, y)
         @current_frame = 0
+        sound.play if sound
       end
 
       def effect?
@@ -43,6 +44,10 @@ module Shmup
 
       def animation
         raise NotImplementedError
+      end
+
+      def sound
+        false
       end
     end
   end

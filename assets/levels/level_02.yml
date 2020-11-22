@@ -1,11 +1,10 @@
 name: "Level 2"
 world_speed: 5
-time: 5000
 boss:
   spawn_time: 0
   sprite: spaceShips_007
   offset: 0.5
   movement: boss
-  fire_motion: none
+  fire_motion: circle
   health: 5000
 enemies:

@@ -7,10 +7,11 @@ module Shmup
 
       def initialize(object_pool, source, motion, damage)
         super(object_pool, source.x, source.y)
-        @graphics = Gosu::Image.new(Utils.asset_path('/sprites/bullet.png'))
         @source = source
         @motion = motion
         @damage = damage
+        @graphics = set_sprite
+        sound.play if source.instance_of? Shmup::Entities::Player::Player #hack
       end
 
       def update
@@ -25,7 +26,6 @@ module Shmup
       end
 
       def draw
-        super
         @graphics.draw_rot(x, y, 0, ZOrder::BULLET)
       end
 
@@ -35,6 +35,19 @@ module Shmup
         obj.health.inflict_damage(damage, source)
         Hit.new(object_pool, x, y)
         mark_for_removal
+      end
+
+      def set_sprite
+        case damage
+        when 0..500
+          Gosu::Image.new(Utils.asset_path('/sprites/bullets/bullet_01.png'))
+        when 500..1000
+          Gosu::Image.new(Utils.asset_path('/sprites/bullets/bullet_02.png'))
+        end
+      end
+
+      def sound
+        @@sound ||= Gosu::Sample.new(Utils.asset_path('sounds/shoot_01.wav'))
       end
     end
   end

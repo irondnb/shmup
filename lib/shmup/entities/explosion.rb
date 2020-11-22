@@ -10,6 +10,10 @@ module Shmup
           Utils.asset_path('sprites/explosion.png'), 256, 256, tileable: false
         )
       end
+
+      def sound
+        @@sound ||= Gosu::Sample.new(Utils.asset_path('sounds/explosion_01.wav'))
+      end
     end
   end
 end
