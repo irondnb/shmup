@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 %w[
   background
   bullet
@@ -12,6 +14,5 @@
 
 module Shmup
   module Entities
-
   end
 end

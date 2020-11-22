@@ -7,7 +7,7 @@ module Shmup
 
       def animation
         @@animation ||= Gosu::Image.load_tiles(
-            Utils.asset_path('sprites/explosion.png'), 256, 256, tileable: false
+          Utils.asset_path('sprites/explosion.png'), 256, 256, tileable: false
         )
       end
     end

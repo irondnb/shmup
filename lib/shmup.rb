@@ -10,7 +10,6 @@ require 'logger'
   misc
 ].each { |filename| require "shmup/#{filename}" }
 
-
 module Shmup
   class << self
     def start
