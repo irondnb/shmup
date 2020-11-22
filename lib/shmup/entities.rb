@@ -3,12 +3,12 @@
 %w[
   background
   bullet
+  health
   player
   enemy
   effect
   explosion
   hit
-  health
   explosion
 ].each { |filename| require "shmup/entities/#{filename}" }
 

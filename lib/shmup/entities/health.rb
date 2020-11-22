@@ -8,7 +8,7 @@ module Shmup
       def initialize(object, object_pool, health, explodes)
         super(object)
         @object_pool = object_pool
-        @health, @initial_health = health
+        @initial_health = @health  = health
         @health_updated = true
         @explodes = explodes
       end
@@ -56,9 +56,14 @@ module Shmup
       end
 
       def after_death(cause)
-        Explosion.new(@object_pool, x, y) if @explodes
+        if @explodes
+          Thread.new do
+            sleep(rand(0.1..0.3))
+            object.mark_for_removal
+            Explosion.new(@object_pool, x, y)
+          end
+        end
         cause.stats.add_kill if cause.respond_to?(:stats)
-        object.mark_for_removal
       end
     end
   end

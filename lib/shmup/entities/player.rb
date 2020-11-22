@@ -2,6 +2,7 @@
 
 %w[
   player
+  health
   graphics
   physics
   input

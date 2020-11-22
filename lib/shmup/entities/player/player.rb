@@ -4,7 +4,7 @@ module Shmup
   module Entities
     module Player
       class Player < Core::GameObject
-        attr_reader :graphics, :physics, :velocity, :health, :stats
+        attr_reader :graphics, :physics, :velocity, :health, :stats, :lives
 
         HEALTH = 500
 
@@ -17,6 +17,7 @@ module Shmup
           @input = Input.new(self)
           @stats = Stats.new
 
+          @lives = 3
           @velocity = 10
           @fire_rate = 300
           @damage = 300
@@ -38,7 +39,17 @@ module Shmup
         end
 
         def dead?
-          health.dead?
+          @lives < 1
+        end
+
+        def die
+          @lives -= 1
+          respawn
+        end
+
+        def respawn
+          move(*spawn_point)
+          health.restore
         end
 
         private

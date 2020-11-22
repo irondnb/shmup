@@ -12,7 +12,7 @@ module Shmup
     def health_image
       if @health.nil? || ship.health.health != @health
         @health = ship.health.health
-        @health_image = Gosu::Image.from_text("Health: #{@health}", 20)
+        @health_image = Gosu::Image.from_text("Health: #{@health}, Lives: #{ship.lives}", 20)
       end
       @health_image
     end
