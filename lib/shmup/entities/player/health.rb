@@ -1,7 +1,7 @@
 module Shmup
   module Entities
     module Player
-      class Health < Entities::Health
+      class Health < Components::Health
         def after_death(cause)
           Explosion.new(@object_pool, x, y)
           object.die

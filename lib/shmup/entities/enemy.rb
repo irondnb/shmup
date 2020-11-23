@@ -3,7 +3,7 @@
 %w[
   definition
   movement
-  enemy
+  base
   graphics
   physics
 ].each { |filename| require "shmup/entities/enemy/#{filename}" }
@@ -12,8 +12,8 @@ module Shmup
   module Entities
     module Enemy
       class << self
-        def spawn(object_pool, definition)
-          Enemy.new(object_pool, definition)
+        def spawn(*args)
+          Base.new(*args)
         end
 
         def build(enemies)

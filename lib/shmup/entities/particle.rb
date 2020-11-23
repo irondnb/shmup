@@ -3,12 +3,12 @@
 %w[
   base
   graphics
-  sound
-].each { |filename| require "shmup/entities/hit/#{filename}" }
+  physics
+].each { |filename| require "shmup/entities/particle/#{filename}" }
 
 module Shmup
   module Entities
-    module Hit
+    module Particle
       class << self
         def new(*args)
           Base.new(*args)

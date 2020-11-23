@@ -11,7 +11,7 @@ module Shmup
         @motion = motion
         @damage = damage
         @graphics = set_sprite
-        sound.play if source.instance_of? Shmup::Entities::Player::Player #hack
+        sound.play if source.instance_of? Shmup::Entities::Player::Base #hack
       end
 
       def update
