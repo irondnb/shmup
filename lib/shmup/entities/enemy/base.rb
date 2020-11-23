@@ -3,7 +3,7 @@
 module Shmup
   module Entities
     module Enemy
-      class Enemy < Core::GameObject
+      class Base < Core::GameObject
         attr_reader :health, :graphics, :physics, :definition
 
         def initialize(object_pool, definition)
@@ -11,7 +11,7 @@ module Shmup
           @definition = definition
           @graphics = Graphics.new(self, definition)
           @physics = Physics.new(self, object_pool, definition)
-          @health = Health.new(self, object_pool, definition.health, true)
+          @health = Components::Health.new(self, object_pool, definition.health, true)
           @fire_motion = definition.fire_motion
           @damage = 1000 # definition.damage
         end

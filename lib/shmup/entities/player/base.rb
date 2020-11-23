@@ -3,7 +3,7 @@
 module Shmup
   module Entities
     module Player
-      class Player < Core::GameObject
+      class Base < Core::GameObject
         attr_reader :graphics, :physics, :velocity, :health, :stats, :lives
 
         HEALTH = 500
@@ -37,7 +37,7 @@ module Shmup
         end
 
         def on_collision(object)
-          health.inflict_damage(250, self) if object.instance_of? Shmup::Entities::Enemy::Enemy
+          health.inflict_damage(250, self) if object.instance_of? Shmup::Entities::Enemy::Base
         end
 
         def dead?

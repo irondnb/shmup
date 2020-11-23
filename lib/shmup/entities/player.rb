@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 %w[
-  player
+  base
   health
   graphics
   physics
@@ -12,8 +12,8 @@ module Shmup
   module Entities
     module Player
       class << self
-        def new(object_pool)
-          Player.new(object_pool)
+        def new(*args)
+          Base.new(*args)
         end
       end
     end

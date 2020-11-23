@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
+%w[
+  base
+  graphics
+  sound
+].each { |filename| require "shmup/entities/hit/#{filename}" }
+
 module Shmup
   module Entities
-    class Hit < Effect
-      private
-
-      def animation
-        @animation ||= Gosu::Image.load_tiles(
-          Utils.asset_path("sprites/hits/#{rand(3)}_512_b.png"), 128, 128, tileable: false
-        )
-      end
-
-      def sound
-        @@sound ||= Gosu::Sample.new(Utils.asset_path('sounds/hit_01.mp3'))
+    module Hit
+      class << self
+        def new(*args)
+          Base.new(*args)
+        end
       end
     end
   end

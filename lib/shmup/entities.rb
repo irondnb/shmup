@@ -1,20 +1,25 @@
 # frozen_string_literal: true
 
 %w[
+  components
+  animation
   background
-  bullet
-  health
   player
   enemy
-  effect
+  bullet
   explosion
-  particle_emitter
   particle
   hit
-  explosion
 ].each { |filename| require "shmup/entities/#{filename}" }
 
 module Shmup
+  # Player = Entities::Player::Base
+  # Enemy = Entities::Enemy::Base
+  # Bullet = Entities::Enemy::Bullet
+  # Explosion = Entities::Enemy::Explosion
+  # Hit = Entities::Enemy::Hit
+  # Hit = Entities::Enemy::Hit
+
   module Entities
   end
 end
