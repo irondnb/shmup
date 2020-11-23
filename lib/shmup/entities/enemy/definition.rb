@@ -17,9 +17,9 @@ module Shmup
         end
 
         def set_fire_motion(fire_motion)
-          eval "FireMotion::#{fire_motion.upcase}"
+          eval "FirePatterns::#{fire_motion.upcase}"
         rescue NameError => e
-          FireMotion::NONE
+          # FireMotion::NONE
         end
       end
     end

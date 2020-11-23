@@ -3,6 +3,7 @@
 %w[
   definition
   movement
+  fire_patterns
   enemy
   graphics
   physics

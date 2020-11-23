@@ -12,12 +12,12 @@ module Shmup
           @graphics = Graphics.new(self, definition)
           @physics = Physics.new(self, object_pool, definition)
           @health = Health.new(self, object_pool, definition.health, true)
-          @fire_motion = definition.fire_motion
+          @fire_pattern = definition.fire_motion
           @damage = 1000 # definition.damage
         end
 
         def after_update
-          shoot
+          @fire_pattern.call(self, object_pool.world_speed) if can_shoot?
           destroy if behind_screen?
         end
 
@@ -25,11 +25,9 @@ module Shmup
           physics.offset
         end
 
-        def shoot
-          return unless can_shoot?
-
-          @last_shoot = Gosu.milliseconds
-          Bullet.new(object_pool, self, @fire_motion, @damage)
+        def shoot(target_x, target_y, speed, damage)
+          @fired_at = Gosu.milliseconds
+          Bullet.new(object_pool, self, target_x, target_y, speed, damage).fire#(speed) #todo
         end
 
         def dead?
@@ -43,7 +41,7 @@ module Shmup
         private
 
         def can_shoot?
-          @fire_motion != Shmup::FireMotion::NONE && Gosu.milliseconds > (@last_shoot || 0) + 500
+          @fire_motion != Shmup::FireMotion::NONE && Gosu.milliseconds > (@fired_at || 0) + 500
         end
 
         def destroy
