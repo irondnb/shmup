@@ -3,7 +3,7 @@
 module Shmup
   module Entities
     module Enemy
-      class Enemy < Core::GameObject
+      class Base < Core::GameObject
         attr_reader :health, :graphics, :physics, :definition
 
         def initialize(object_pool, definition)
@@ -41,7 +41,7 @@ module Shmup
         private
 
         def can_shoot?
-          @fire_motion != Shmup::FireMotion::NONE && Gosu.milliseconds > (@fired_at || 0) + 500
+          @fire_pattern != Shmup::FireMotion::NONE && Gosu.milliseconds > (@fired_at || 0) + 500
         end
 
         def destroy
