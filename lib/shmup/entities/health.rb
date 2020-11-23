@@ -59,11 +59,8 @@ module Shmup
 
       def after_death(cause)
         if @explodes
-          Thread.new do
-            sleep(rand(0.1..0.3))
-            object.mark_for_removal
-            Explosion.new(@object_pool, x, y)
-          end
+          Explosion.new(@object_pool, x, y)
+          object.mark_for_removal
         end
         cause.stats.add_kill if cause.respond_to?(:stats)
       end

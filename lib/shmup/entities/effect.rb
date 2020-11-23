@@ -20,6 +20,7 @@ module Shmup
       end
 
       def update
+        super # todo 
         now = Gosu.milliseconds
         delta = now - (@last_frame ||= now)
         @last_frame = now if delta > FRAME_DELAY

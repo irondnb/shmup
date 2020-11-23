@@ -2,11 +2,6 @@
 
 module Shmup
   module ZOrder
-    BACKGROUND = 0
-    BULLET = 1
-    ENEMY = 2
-    PLAYER = 3
-    EFFECT = 4
-    HUD = 5
+    BACKGROUND, BULLET, ENEMY, PLAYER, SHADOW, SHAPE, HIGHLIGHT, EFFECT, HUD = *0..8
   end
 end

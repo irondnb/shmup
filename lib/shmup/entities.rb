@@ -8,6 +8,8 @@
   enemy
   effect
   explosion
+  particle_emitter
+  particle
   hit
   explosion
 ].each { |filename| require "shmup/entities/#{filename}" }

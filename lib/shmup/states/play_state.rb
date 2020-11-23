@@ -87,7 +87,6 @@ module Shmup
 
       def lost!
         @lost = true
-        player.input
       end
 
       def spawn_enemy

@@ -3,6 +3,11 @@
 module Shmup
   module Entities
     class Explosion < Effect
+      def initialize(object_pool, x, y)
+        super(object_pool, x, y)
+        @particle_emitter = ParticleEmitter.new(self, object_pool)
+      end
+
       private
 
       def animation
