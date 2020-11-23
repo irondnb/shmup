@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   module Entities
     module Hit
@@ -8,7 +10,7 @@ module Shmup
 
         def animation
           @animation ||= Gosu::Image.load_tiles(
-              Utils.asset_path("sprites/hits/#{rand(3)}_512_b.png"), 128, 128, tileable: false
+            Utils.asset_path("sprites/hits/#{rand(3)}_512_b.png"), 128, 128, tileable: false
           )
         end
       end

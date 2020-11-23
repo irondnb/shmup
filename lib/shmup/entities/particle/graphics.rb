@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   module Entities
     module Particle
@@ -8,9 +10,9 @@ module Shmup
         end
 
         def draw
-          draw_layer(ZOrder::SHADOW, Gosu::Color.new((object.life * 128).floor,0,0,0), x + 2, y + 2)
-          draw_layer(ZOrder::SHAPE, Gosu::Color.new((object.life * 255).floor, 100,100,100))
-          draw_layer(ZOrder::HIGHLIGHT, Gosu::Color.new((object.life * 20).floor,255,255,255))
+          draw_layer(ZOrder::SHADOW, Gosu::Color.new((object.life * 128).floor, 0, 0, 0), x + 2, y + 2)
+          draw_layer(ZOrder::SHAPE, Gosu::Color.new((object.life * 255).floor, 100, 100, 100))
+          draw_layer(ZOrder::HIGHLIGHT, Gosu::Color.new((object.life * 20).floor, 255, 255, 255))
         end
 
         private

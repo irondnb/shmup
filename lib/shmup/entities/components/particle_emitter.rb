@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Shmup
   module Entities
     module Components
       class ParticleEmitter < Core::Component
         attr_reader :object, :object_pool, :sprites
 
-        SPRITES = %w[cockpit engine_01 engine_02 gun_01 gun_02 gun_03 wing_01 wing_02 wing_03]
+        SPRITES = %w[cockpit engine_01 engine_02 gun_01 gun_02 gun_03 wing_01 wing_02 wing_03].freeze
         DECAY_TIME = 0.03
         EMMIT_TIME = 300
 
@@ -13,15 +15,13 @@ module Shmup
           @object_pool = object_pool
           @object = object
           @particles = []
-          @sprites = sprites.collect {|s| Gosu::Image.new(Utils.asset_path("/sprites/parts/#{s}.png"), tileable: false)}
+          @sprites = sprites.collect { |s| Gosu::Image.new(Utils.asset_path("/sprites/parts/#{s}.png"), tileable: false) }
         end
 
         def update
           now = Gosu.milliseconds
           @spawned_at ||= now
-          unless now > @spawned_at + EMMIT_TIME
-            spawn(rand * 360, (rand * 3) + 3)
-          end
+          spawn(rand * 360, (rand * 3) + 3) unless now > @spawned_at + EMMIT_TIME
         end
 
         def spawn(angle, speed)

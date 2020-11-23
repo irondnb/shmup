@@ -17,7 +17,6 @@ module Shmup
         new(settings)
       end
 
-
       def initialize(settings)
         @settings = settings
         @object_pool = Core::ObjectPool.new
@@ -33,9 +32,7 @@ module Shmup
       def update
         if win? || lost?
           @switch_delay ||= Gosu.milliseconds
-          if Gosu.milliseconds - @switch_delay >= SWITCH_DELAY
-            GameState.switch(MenuState.instance)
-          end
+          GameState.switch(MenuState.instance) if Gosu.milliseconds - @switch_delay >= SWITCH_DELAY
         end
 
         spawn_enemy if spawn_enemy?
@@ -43,13 +40,11 @@ module Shmup
         if @boss
           spawn_boss if spawn_boss?
           win! if @boss_entity&.dead?
-        else
-          win! if settings.time && Gosu.milliseconds >= settings.time
+        elsif settings.time && Gosu.milliseconds >= settings.time
+          win!
         end
 
-        if !win? && @player.dead?
-          lost!
-        end
+        lost! if !win? && @player.dead?
 
         @object_pool.update_all
       end
@@ -103,13 +98,6 @@ module Shmup
 
       def spawn_boss?
         Gosu.milliseconds >= @boss.spawn_time && @boss_entity.nil?
-      end
-
-      def load_enemies
-        ['enemies']
-      end
-
-      def build_enemies
       end
 
       def toggle_profiling

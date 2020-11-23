@@ -4,7 +4,6 @@ module Shmup
   module Entities
     module Bullet
       class Graphics < Core::Component
-
         def initialize(game_object, damage)
           super(game_object)
           @sprite = sprite(damage)

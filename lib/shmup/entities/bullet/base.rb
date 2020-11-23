@@ -7,7 +7,7 @@ module Shmup
         attr_accessor :angle
         attr_reader :source, :vel_x, :vel_y, :graphics, :physics, :damage
 
-        def initialize(object_pool, source, x, y, vel_x, vel_y,  damage)
+        def initialize(object_pool, source, x, y, vel_x, vel_y, damage)
           super(object_pool, x, y)
           @source = source
           @vel_x = vel_x

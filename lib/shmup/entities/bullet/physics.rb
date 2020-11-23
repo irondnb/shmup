@@ -4,7 +4,6 @@ module Shmup
   module Entities
     module Bullet
       class Physics < Core::Component
-
         attr_reader :object_pool, :angle
 
         def initialize(game_object, object_pool)
