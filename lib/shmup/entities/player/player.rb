@@ -7,6 +7,7 @@ module Shmup
         attr_reader :graphics, :physics, :velocity, :health, :stats, :lives
 
         HEALTH = 500
+        PROTECTION_TIME = 3000
 
         def initialize(object_pool)
           super(object_pool, *spawn_point)
@@ -21,6 +22,7 @@ module Shmup
           @velocity = 10
           @fire_rate = 300
           @damage = 300
+          set_spawn_time
         end
 
         def shoot
@@ -42,6 +44,10 @@ module Shmup
           @lives < 1
         end
 
+        def immune?
+          Gosu.milliseconds < @spawn_time + PROTECTION_TIME
+        end
+
         def die
           @lives -= 1
           respawn
@@ -50,9 +56,14 @@ module Shmup
         def respawn
           move(*spawn_point)
           health.restore
+          set_spawn_time
         end
 
         private
+
+        def set_spawn_time
+          @spawn_time = Gosu.milliseconds
+        end
 
         def spawn_point
           [$window.width / 2, $window.height - 200]

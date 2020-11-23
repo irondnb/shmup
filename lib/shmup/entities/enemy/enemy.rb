@@ -13,7 +13,7 @@ module Shmup
           @physics = Physics.new(self, object_pool, definition)
           @health = Health.new(self, object_pool, definition.health, true)
           @fire_motion = definition.fire_motion
-          @damage = 100 # definition.damage
+          @damage = 1000 # definition.damage
         end
 
         def after_update
@@ -34,6 +34,10 @@ module Shmup
 
         def dead?
           health.dead?
+        end
+
+        def immune?
+          false
         end
 
         private

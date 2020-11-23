@@ -25,28 +25,28 @@ enemies:
     health: 250
 
   # second wave
-  - spawn_time: 1600
+  - spawn_time: 1500
     sprite: spaceShips_002
     offset: 0.7
     movement: left
     fire_motion: none
     health: 250
 
-  - spawn_time: 1800
+  - spawn_time: 2000
     sprite: spaceShips_002
     offset: 0.8
     movement: left
     fire_motion: none
     health: 250
 
-  - spawn_time: 2000
+  - spawn_time: 2500
     sprite: spaceShips_002
     offset: 0.9
     movement: left
     fire_motion: none
     health: 250
 
-  - spawn_time: 2200
+  - spawn_time: 3000
     sprite: spaceShips_002
     offset: 1
     movement: left
@@ -55,57 +55,57 @@ enemies:
 
   # third wave
 
-  - spawn_time: 3000
+  - spawn_time: 3500
     sprite: spaceShips_002
     offset: 0.4
     movement: right
     fire_motion: down
     health: 250
 
-  - spawn_time: 3200
+  - spawn_time: 4000
     sprite: spaceShips_002
     offset: 0.3
     movement: right
-    fire_motion: none
+    fire_motion: down
     health: 250
 
-  - spawn_time: 3400
+  - spawn_time: 4500
     sprite: spaceShips_002
     offset: 0.2
     movement: right
     fire_motion: down
     health: 250
 
-  - spawn_time: 3600
+  - spawn_time: 5000
     sprite: spaceShips_002
     offset: 0.1
     movement: right
-    fire_motion: none
+    fire_motion: down
     health: 250
 
 
-  - spawn_time: 4000
+  - spawn_time: 5000
     sprite: spaceShips_003
     offset: 0.25
     movement: fast
     fire_motion: none
     health: 250
 
-  - spawn_time: 4000
+  - spawn_time: 5000
     sprite: spaceShips_003
     offset: 0.75
     movement: fast
     fire_motion: none
     health: 250
 
-  - spawn_time: 4500
+  - spawn_time: 5500
     sprite: spaceShips_004
     offset: 0.33
     movement: sin
     fire_motion: down
     health: 500
 
-  - spawn_time: 4500
+  - spawn_time: 5500
     sprite: spaceShips_004
     offset: 0.66
     movement: sin
@@ -114,7 +114,7 @@ enemies:
 
   # Boss
 boss:
-  spawn_time: 6000
+  spawn_time: 6500
   sprite: spaceShips_007
   offset: 0.5
   movement: boss

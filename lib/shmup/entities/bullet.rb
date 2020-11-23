@@ -19,7 +19,7 @@ module Shmup
         mark_for_removal if y.negative?
         objects = object_pool.nearby(self, 100)
         objects.each do |obj|
-          next if obj == source || obj.instance_of?(Shmup::Entities::Bullet)
+          next if obj == source || obj.instance_of?(self.class) || obj.instance_of?(source.class)
 
           hit(obj) if Utils.point_in_poly(x, y, *obj.box)
         end

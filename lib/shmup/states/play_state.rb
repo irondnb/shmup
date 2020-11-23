@@ -8,7 +8,7 @@ module Shmup
       attr_reader :object_pool, :player, :enemies, :settings
       attr_accessor :world_speed
 
-      SWITCH_DELAY = 3000
+      SWITCH_DELAY = 1500
       Settings = Struct.new(:name, :world_speed, :time, :enemies, :boss)
 
       def self.build(config)
@@ -87,6 +87,7 @@ module Shmup
 
       def lost!
         @lost = true
+        player.input
       end
 
       def spawn_enemy
