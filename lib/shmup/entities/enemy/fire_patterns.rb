@@ -2,17 +2,22 @@ module Shmup
   module Entities
     module Enemy
       module FirePatterns
+        NONE = -> (object, world_speed) { }
+
         DOWN = -> (object, world_speed) {
-          object.shoot(object.x, object.y + world_speed, 300, 50)
+          object.shoot(0, world_speed * 2, 50)
         }
 
         CIRCLE = ->(object, world_speed) {
-          bullets = 15
-          theta = Math::PI * 2.0 / bullets
+          BASE_CIRCLE.call(object, world_speed, 15, 2.0)
+        }
+
+        BASE_CIRCLE = ->(object, world_speed, bullets, range) {
+          theta = Math::PI * range / bullets
           bullets.times do |i|
-            target_x = 10 * Math.cos(theta * i)
-            target_y = 10 * Math.sin(theta * i) + world_speed
-            object.shoot(target_x, target_y, 150, 300)
+            vel_x = 10 * Math.cos(theta * i)
+            vel_y = 10 * Math.sin(theta * i )
+            object.shoot(vel_x * 0.75, vel_y * 0.75, 300)
           end
         }
       end

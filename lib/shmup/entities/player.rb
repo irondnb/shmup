@@ -6,6 +6,7 @@
   graphics
   physics
   input
+  fire_patterns
 ].each { |filename| require "shmup/entities/player/#{filename}" }
 
 module Shmup

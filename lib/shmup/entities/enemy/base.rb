@@ -12,7 +12,7 @@ module Shmup
           @graphics = Graphics.new(self, definition)
           @physics = Physics.new(self, object_pool, definition)
           @health = Components::Health.new(self, object_pool, definition.health, true)
-          @fire_pattern = definition.fire_motion
+          @fire_pattern = definition.fire_pattern
           @damage = 1000 # definition.damage
         end
 
@@ -25,9 +25,9 @@ module Shmup
           physics.offset
         end
 
-        def shoot(target_x, target_y, speed, damage)
+        def shoot(target_x, target_y, damage)
           @fired_at = Gosu.milliseconds
-          Bullet.new(object_pool, self, target_x, target_y, speed, damage).fire#(speed) #todo
+          Bullet.new(object_pool, self, x, y, target_x, target_y, damage).fire
         end
 
         def dead?

@@ -5,6 +5,6 @@ boss:
   sprite: spaceShips_007
   offset: 0.5
   movement: boss
-  fire_motion: circle
+  fire_pattern: down
   health: 5000
 enemies:
