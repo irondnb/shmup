@@ -10,7 +10,7 @@ module Shmup
         end
 
         def draw
-          @sprite.draw_rot(x, y, 1, ZOrder::PLAYER)
+          @sprite.draw_rot(x, y, ZOrder::PLAYER, 0)
         end
 
         def width

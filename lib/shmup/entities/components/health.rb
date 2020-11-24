@@ -2,8 +2,6 @@
 
 module Shmup
   module Entities
-
-
     module BaseConstructor
       def self.new(*args)
         Base.new(*args)
@@ -17,7 +15,7 @@ module Shmup
         def initialize(object, object_pool, health, explodes)
           super(object)
           @object_pool = object_pool
-          @initial_health = @health  = health
+          @initial_health = @health = health
           @health_updated = true
           @explodes = explodes
         end

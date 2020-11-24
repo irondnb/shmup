@@ -10,7 +10,7 @@ module Shmup
         end
 
         def draw
-          @sprite.draw_rot(x, y, 0, ZOrder::ENEMY)
+          @sprite.draw_rot(x, y, ZOrder::ENEMY, 0)
         end
 
         def width

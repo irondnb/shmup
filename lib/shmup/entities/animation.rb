@@ -41,4 +41,3 @@ module Shmup
     end
   end
 end
-

@@ -2,7 +2,7 @@
 
 module Shmup
   module Entities
-    module Explosion
+    module Bullet
       class Sound
         class << self
           def play
@@ -12,7 +12,7 @@ module Shmup
           private
 
           def sound
-            @@sound ||= Gosu::Sample.new(Utils.asset_path('sounds/explosion_01.wav'))
+            @@sound ||= Gosu::Sample.new(Utils.asset_path('sounds/shoot_01.wav'))
           end
         end
       end

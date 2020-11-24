@@ -32,7 +32,7 @@ module Shmup
       end
 
       def adjust_speed(speed)
-        speed * update_interval / 33.33
+        speed * $window.update_interval / 33.33
       end
 
       def mark_corners(box)
@@ -68,6 +68,12 @@ module Shmup
           j = i
         end
         inside
+      end
+
+      def angle_between(x, y, target_x, target_y)
+        dx = target_x - x
+        dy = target_y - y
+        (180 - Math.atan2(dx, dy) * 180 / Math::PI) + 360 % 360
       end
     end
   end

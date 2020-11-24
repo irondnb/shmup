@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shmup
   module Entities
     module Particle
@@ -9,7 +11,7 @@ module Shmup
 
           @graphics = Graphics.new(self, sprite)
           @physics = Physics.new(self)
-          @angle =  90 - angle
+          @angle = 90 - angle
           @speed = speed
           @decay_speed = decay_speed
           @d_x = Gosu.offset_x(@angle, @speed)

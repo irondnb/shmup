@@ -21,6 +21,7 @@ module Shmup
           @lives = 3
           @velocity = 10
           @fire_rate = 300
+          @fire_pattern = FirePatterns::TRIPLE
           @damage = 300
           set_spawn_time
         end
@@ -28,8 +29,12 @@ module Shmup
         def shoot
           return unless can_shoot?
 
+          @fire_pattern.call(self, object_pool.world_speed)
           @last_shoot = Gosu.milliseconds
-          Bullet.new(object_pool, self, FireMotion::UP, @damage)
+        end
+
+        def fire(vel_x, vel_y, damage)
+          Bullet.new(object_pool, self, x, y, vel_x, vel_y, damage).fire
         end
 
         def can_shoot?
