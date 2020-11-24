@@ -9,6 +9,19 @@ module Shmup
           @graphics = Graphics.new(self)
           @sound = Sound.play
         end
+
+        def update
+          move(x, y + object_pool.world_speed)
+          super
+        end
+
+        def effect?
+          true
+        end
+
+        def box
+          [x, y]
+        end
       end
     end
   end

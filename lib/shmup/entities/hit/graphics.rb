@@ -15,7 +15,7 @@ module Shmup
         end
 
         def frame_delay
-          33.33
+          16.66
         end
       end
     end

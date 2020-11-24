@@ -10,7 +10,7 @@ module Shmup
           super(object_pool, x, y)
 
           @graphics = Graphics.new(self, sprite)
-          @physics = Physics.new(self)
+          @physics = Physics.new(self, object_pool)
           @angle = 90 - angle
           @speed = speed
           @decay_speed = decay_speed

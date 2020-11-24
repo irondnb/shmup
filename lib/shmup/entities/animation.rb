@@ -17,14 +17,6 @@ module Shmup
         image.draw_rot(x, y, ZOrder::EFFECT, 0)
       end
 
-      def effect?
-        true
-      end
-
-      def box
-        [x, y]
-      end
-
       private
 
       def current_frame
