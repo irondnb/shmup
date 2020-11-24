@@ -4,9 +4,9 @@ module Shmup
   module Entities
     module Enemy
       class Graphics < Core::Component
-        def initialize(game_object, definition)
+        def initialize(game_object, sprite)
           super(game_object)
-          @sprite = Gosu::Image.new(Utils.asset_path("/sprites/enemy/#{definition.sprite}.png"), tileable: false)
+          @sprite = Gosu::Image.new(Utils.asset_path("/sprites/enemy/#{sprite}.png"), tileable: false)
         end
 
         def draw
