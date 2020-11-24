@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 %w[
+  base
+  graphics
+  input
   definition
   movement
   fire_patterns
-  base
-  graphics
-  physics
 ].each { |filename| require "shmup/entities/enemy/#{filename}" }
 
 module Shmup
