@@ -11,6 +11,11 @@ module Shmup
             Utils.asset_path('sprites/explosion.png'), 256, 256, tileable: false
           )
         end
+
+
+        def frame_delay
+          8
+        end
       end
     end
   end
