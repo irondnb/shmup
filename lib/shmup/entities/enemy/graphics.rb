@@ -10,15 +10,16 @@ module Shmup
         end
 
         def draw
-          @sprite.draw_rot(x, y, ZOrder::PLAYER, 0)
+          @sprite.draw_rot(x, y, ZOrder::ENEMY, 0)
+          @sprite.draw_rot(x + 20, y + 30, ZOrder::SHADOW, 0, 0.5, 0.5, 0.85, 0.85, Gosu::Color.new(24, 0, 0, 0))
         end
 
         def width
-          @sprite.width
+          @width ||= @sprite.width
         end
 
         def height
-          @sprite.height
+          @height ||= @sprite.height
         end
       end
     end

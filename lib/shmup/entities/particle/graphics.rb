@@ -18,7 +18,7 @@ module Shmup
         private
 
         def draw_layer(layer, color, x = nil, y = nil)
-          @sprite.draw_rot(x || object.x, y || object.y, layer, object.angle, 0.5, 0.5, object.life, object.life, color, :default)
+          @sprite.draw_rot(x || object.x, y || object.y, layer, object.angle, 0.5, 0.5, object.life, object.life, color)
         end
       end
     end

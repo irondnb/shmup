@@ -7,8 +7,8 @@ module Shmup
         attr_reader :object, :object_pool, :sprites
 
         SPRITES = %w[cockpit engine_01 engine_02 gun_01 gun_02 gun_03 wing_01 wing_02 wing_03].freeze
-        DECAY_TIME = 0.03
-        EMMIT_TIME = 300
+        DECAY_TIME = 0.025
+        EMMIT_TIME = 260
 
         def initialize(object, object_pool, sprites = SPRITES)
           super(object)
@@ -21,7 +21,7 @@ module Shmup
         def update
           now = Gosu.milliseconds
           @spawned_at ||= now
-          spawn(rand * 360, (rand * 3) + 3) unless now > @spawned_at + EMMIT_TIME
+          spawn(rand * 360, (rand * 10)) unless now > @spawned_at + EMMIT_TIME
         end
 
         def spawn(angle, speed)

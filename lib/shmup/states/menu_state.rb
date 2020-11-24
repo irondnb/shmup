@@ -9,7 +9,7 @@ module Shmup
 
       def initialize
         @message = Gosu::Image.from_text('Shmup', 100)
-        @info = Gosu::Image.from_text("Press:\n 1 - 2 \nQ: Quit", 50)
+        @info = Gosu::Image.from_text("Q: Quit", 50)
       end
 
       def enter; end

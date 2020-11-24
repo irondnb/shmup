@@ -16,7 +16,7 @@ module Shmup
           @decay_speed = decay_speed
           @d_x = Gosu.offset_x(@angle, @speed)
           @d_y = Gosu.offset_y(@angle, @speed)
-          @life = 1.25
+          @life = 1.1
         end
 
         def box
