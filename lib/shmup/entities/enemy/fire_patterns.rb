@@ -10,8 +10,15 @@ module Shmup
           object.shoot(0, world_speed * 2, 50)
         }
 
+        TRIPLE = lambda { |object, world_speed|
+          object.shoot(-3, world_speed * 2, 50)
+          object.shoot(0, world_speed * 3, 150)
+          object.shoot(3, world_speed * 2, 50)
+        }
+
+
         CIRCLE = lambda { |object, world_speed|
-          BASE_CIRCLE.call(object, world_speed, 15, 2.0)
+          BASE_CIRCLE.call(object, world_speed, 32, 2.0)
         }
 
         BASE_CIRCLE = lambda { |object, _world_speed, bullets, range|

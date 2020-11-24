@@ -25,87 +25,114 @@ enemies:
     health: 100
 
   # second wave
-  - spawn_time: 1500
+  - spawn_time: 2000
     sprite: spaceShips_002
     offset: 0.7
     movement: left
-    fire_pattern: none
+    fire_pattern: down
     health: 100
 
-  - spawn_time: 2000
+  - spawn_time: 2250
     sprite: spaceShips_002
     offset: 0.8
     movement: left
-    fire_pattern: none
+    fire_pattern: down
     health: 100
 
   - spawn_time: 2500
     sprite: spaceShips_002
     offset: 0.9
     movement: left
-    fire_pattern: none
+    fire_pattern: down
+    health: 100
+
+  - spawn_time: 2750
+    sprite: spaceShips_002
+    offset: 1
+    movement: left
+    fire_pattern: down
     health: 100
 
   - spawn_time: 3000
     sprite: spaceShips_002
-    offset: 1
-    movement: left
+    offset: 0.4
+    movement: right
     fire_pattern: none
     health: 100
 
-  # third wave
-
-  - spawn_time: 3500
-    sprite: spaceShips_002
-    offset: 0.4
-    movement: right
-    fire_pattern: down
-    health: 100
-
-  - spawn_time: 4000
+  - spawn_time: 3250
     sprite: spaceShips_002
     offset: 0.3
     movement: right
-    fire_pattern: down
+    fire_pattern: none
     health: 100
 
-  - spawn_time: 4500
+  - spawn_time: 3500
     sprite: spaceShips_002
     offset: 0.2
     movement: right
-    fire_pattern: down
+    fire_pattern: none
     health: 100
 
-  - spawn_time: 5000
+  - spawn_time: 3750
     sprite: spaceShips_002
     offset: 0.1
     movement: right
-    fire_pattern: down
+    fire_pattern: none
     health: 100
 
+  - spawn_time: 4500
+    sprite: spaceShips_004
+    offset: 0.33
+    movement: sin
+    fire_pattern: triple
+    health: 250
 
   - spawn_time: 5000
+    sprite: spaceShips_005
+    offset: 0.33
+    movement: sin
+    fire_pattern: none
+    health: 100
+
+  - spawn_time: 6000
+    sprite: spaceShips_005
+    offset: 0.66
+    movement: sin
+    fire_pattern: none
+    health: 100
+
+  - spawn_time: 6500
+    sprite: spaceShips_004
+    offset: 0.33
+    movement: sin
+    fire_pattern: triple
+    health: 250
+
+  # third wave
+
+  - spawn_time: 7000
     sprite: spaceShips_003
     offset: 0.25
     movement: fast
     fire_pattern: none
     health: 150
 
-  - spawn_time: 5000
+  - spawn_time: 7000
     sprite: spaceShips_003
     offset: 0.75
     movement: fast
     fire_pattern: none
     health: 150
 
-  - spawn_time: 5500
+  - spawn_time: 7500
     sprite: spaceShips_004
     offset: 0.33
     movement: sin
     fire_pattern: down
     health: 250
 
-  - spawn_time: 5500
+  - spawn_time: 7500
     sprite: spaceShips_004
     offset: 0.66
     movement: sin
@@ -114,7 +141,7 @@ enemies:
 
   # Boss
 boss:
-  spawn_time: 6500
+  spawn_time: 10000
   sprite: spaceShips_007
   offset: 0.5
   movement: boss

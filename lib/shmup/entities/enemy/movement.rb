@@ -24,7 +24,7 @@ module Shmup
         }
 
         BOSS = lambda { |object, world_speed|
-          FAST.call(object, world_speed) if object.y < $window.height / 4
+          SLOW.call(object, world_speed) if object.y < $window.height / 4
         }
       end
     end

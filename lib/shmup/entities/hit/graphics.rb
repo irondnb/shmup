@@ -13,6 +13,10 @@ module Shmup
             Utils.asset_path("sprites/hits/#{rand(3)}_512_b.png"), 128, 128, tileable: false
           )
         end
+
+        def frame_delay
+          33.33
+        end
       end
     end
   end
