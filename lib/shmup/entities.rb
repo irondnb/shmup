@@ -5,8 +5,8 @@
   animation
   background
   player
-  enemy
   bullet
+  enemy
   explosion
   particle
   hit

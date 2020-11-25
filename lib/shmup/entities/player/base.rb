@@ -34,7 +34,7 @@ module Shmup
         end
 
         def fire(vel_x, vel_y, damage)
-          Bullet.new(object_pool, self, x, y, vel_x, vel_y, damage).fire
+          Bullet::Base.new(object_pool, self, x, y, vel_x, vel_y, damage).fire
         end
 
         def can_shoot?

@@ -2,6 +2,7 @@
 
 %w[
   base
+  bullet
   graphics
   input
   definition

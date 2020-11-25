@@ -4,24 +4,21 @@ module Shmup
   module Entities
     module Bullet
       class Graphics < Core::Component
-        def initialize(game_object, damage)
+        def initialize(game_object, sprite)
           super(game_object)
-          @sprite = sprite(damage)
+          @sprite = sprite
         end
 
         def draw
           @sprite.draw_rot(x, y, ZOrder::BULLET, object.physics.angle)
         end
 
-        private
+        def width
+          @widht ||= @sprite.width
+        end
 
-        def sprite(damage)
-          case damage
-          when 0..100
-            Gosu::Image.new(Utils.asset_path('/sprites/bullets/bullet_01.png'))
-          when 100..300
-            Gosu::Image.new(Utils.asset_path('/sprites/bullets/bullet_02.png'))
-          end
+        def height
+          @height ||= @sprite.width
         end
       end
     end

@@ -14,13 +14,28 @@ module Shmup
           @vel_y = vel_y
           @damage = damage
 
-          @graphics = Graphics.new(self, damage)
+          @graphics = Graphics.new(self, sprite)
           @physics = Physics.new(self, object_pool)
           @sound = Sound.play
         end
 
         def fire
           @fired_at = Gosu.milliseconds
+        end
+
+        def box
+          physics.box
+        end
+
+        private
+
+        def sprite
+          case damage
+          when 0..100
+            @bullet_light ||= Gosu::Image.new(Utils.asset_path('/sprites/bullets/bullet_01.png'))
+          when 100..300
+            @bullet_medium ||= Gosu::Image.new(Utils.asset_path('/sprites/bullets/bullet_02.png'))
+          end
         end
       end
     end

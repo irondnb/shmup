@@ -26,7 +26,7 @@ module Shmup
           bullets.times do |i|
             vel_x = 10 * Math.cos(theta * i)
             vel_y = 10 * Math.sin(theta * i)
-            object.shoot(vel_x * 0.75, vel_y * 0.75, 300)
+            object.shoot(vel_x * 0.75, vel_y * 0.75, i.odd? ? 100 : 300)
           end
         }
       end

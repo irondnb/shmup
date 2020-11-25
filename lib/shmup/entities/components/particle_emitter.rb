@@ -25,7 +25,7 @@ module Shmup
         end
 
         def spawn(angle, speed)
-          Particle.new(object_pool, object.x, object.y + object_pool.world_speed,
+          Particle::Base.new(object_pool, object.x, object.y + object_pool.world_speed,
                        sprites[(rand * sprites.size).floor], angle, speed, decay_time)
         end
 

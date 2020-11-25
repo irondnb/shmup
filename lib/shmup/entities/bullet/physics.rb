@@ -25,7 +25,26 @@ module Shmup
           object.mark_for_removal if outside_screen?
         end
 
+        def box
+          w = box_width / 2
+          h = box_height / 2
+          [
+              x - w, y - h,
+              x + w, y - h,
+              x + w, y + h,
+              x - w, y + h
+          ]
+        end
+
         private
+
+        def box_height
+          @box_height ||= object.graphics.height
+        end
+
+        def box_width
+          @box_width ||= object.graphics.width
+        end
 
         def target_position
           new_x = object.x + object.vel_x
@@ -45,7 +64,7 @@ module Shmup
           return unless obj.respond_to?(:health)
 
           obj.health.inflict_damage(object.damage, object.source)
-          Hit.new(object_pool, x, y)
+          Hit::Base.new(object_pool, x, y)
           object.mark_for_removal
         end
       end

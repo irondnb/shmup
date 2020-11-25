@@ -24,7 +24,7 @@ module Shmup
 
         @background = Entities::Background.new(@object_pool)
         @enemies = Entities::Enemy.build(settings.enemies)
-        @player = Entities::Player.new(@object_pool)
+        @player = Entities::Player::Base.new(@object_pool)
         @boss = Entities::Enemy.build_boss(settings.boss)
         @hud = Hud.new(self)
       end

@@ -66,7 +66,7 @@ module Shmup
 
         def after_death(cause)
           if @explodes
-            Explosion.new(@object_pool, x, y)
+            Explosion::Base.new(@object_pool, x, y)
             object.mark_for_removal
           end
           cause.stats.add_kill if cause.respond_to?(:stats)
